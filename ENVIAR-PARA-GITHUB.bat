@@ -5,6 +5,9 @@ echo ========================================================
 echo   ENVIANDO CODIGO PARA O GITHUB...
 echo ========================================================
 echo.
+git add .
+git commit -m "Atualiza configuracao e versao completa"
+echo.
 git push -u origin main --force
 echo.
 if errorlevel 1 (
@@ -12,7 +15,6 @@ if errorlevel 1 (
     echo Se uma janela de login abriu, autorize e tente novamente.
 ) else (
     echo [SUCESSO] Repositorio atualizado com sucesso!
-    echo A Vercel vai publicar as alteracoes agora.
 )
 echo.
 pause

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PsicoTech — Cuidado por afinidade</title>
+<meta name="description" content="Encontre um psicólogo, converse e organize seus atendimentos na PsicoTech.">
+<link rel="icon" href="logo.png">
+<!-- essa parte carrega as fontes usadas no site (Poppins para títulos, Inter para textos) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- essa parte carrega o arquivo de estilos (todo o visual do site está no styles.css) -->
+<link href="styles.css" rel="stylesheet"/>
+<link href="app.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<!-- ============================================================ -->
+<!-- essa parte reúne as páginas públicas (Landing Page e Login), sem o menu do app -->
+<!-- ============================================================ -->
+<div id="fullbleed-wrap">
+<!-- ---- essa parte é a página inicial (Landing Page) que todo mundo vê antes de entrar ---- -->
+<section class="screen full-bleed active landing__screen" data-screen="landing" id="scr-landing">
+<div class="landing__div">
+<nav class="landing__nav">
+<div class="logo"><span class="official-logo" aria-label="PsicoTech"></span></div>
+<div class="flex gap-20 items-center landing__flex">
+<a href="#" onclick="showScreen('como-funciona'); return false;">Como funciona</a>
+<a href="#" onclick="showScreen('para-psicologos'); return false;">Para psicólogos</a>
+<a href="#" onclick="showScreen('sobre'); return false;">Sobre</a>
+</div>
+<div class="flex gap-12 landing__actions">
+<button class="btn btn-ghost" onclick="showScreen('login')">Entrar</button>
+<button class="btn btn-primary landing__cta-btn" onclick="showScreen('login')">Começar agora</button>
+<button class="landing__mobile-btn btn-icon" id="landing-menu-btn" onclick="toggleLandingNav()" aria-label="Abrir menu"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</div>
+</nav>
+<div class="landing__mobile-drawer" id="landing-mobile-drawer">
+<div class="landing__mobile-drawer-links">
+<a href="#" onclick="toggleLandingNav(false); showScreen('como-funciona'); return false;">Como funciona</a>
+<a href="#" onclick="toggleLandingNav(false); showScreen('para-psicologos'); return false;">Para psicólogos</a>
+<a href="#" onclick="toggleLandingNav(false); showScreen('sobre'); return false;">Sobre</a>
+<a href="#" onclick="toggleLandingNav(false); showScreen('login'); return false;">Entrar</a>
+</div>
+<button class="btn btn-primary btn-block mt-12" onclick="toggleLandingNav(false); showScreen('login');">Começar agora</button>
+</div>
+<section class="landing__section">
+<div class="landing__div2">
+<span class="badge badge-primary mb-16">💬 Match por afinidade real</span>
+<h1 class="landing__h1">A terapia certa <br/>começa com o <span class="landing__span">match certo.</span></h1>
+<p class="text-soft mt-16 landing__text-soft">Respondendo a um questionário rápido, conectamos você a psicólogos com cadastro revisado que combinam com seu jeito, seus valores e sua rotina.</p>
+<div class="flex gap-12 mt-24">
+<button class="btn btn-primary btn-lg" onclick="showScreen('login')">Encontrar meu psicólogo <span id="ic-arrow"></span></button>
+<button class="btn btn-outline btn-lg" onclick="showScreen('como-funciona')">Ver como funciona</button>
+</div>
+<div class="flex gap-20 mt-24 landing__flex2">
+<div class="flex items-center gap-8"><span id="ic-shield1"></span> Acesso restrito à sua conta</div>
+<div class="flex items-center gap-8"><span id="ic-check1"></span> Revisão de cadastro profissional</div>
+</div>
+</div>
+<div class="landing__div3">
+<div class="card-glass landing__card-glass">
+<div class="flex items-center gap-12">
+<div class="avatar landing__avatar">LC</div>
+<div>
+<div class="fw-600">Exemplo de perfil</div>
+<div class="text-xs text-soft">TCC · Ansiedade, Burnout</div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-16">
+<span class="text-xs text-soft">Compatibilidade</span>
+<span class="fw-700 landing__fw-700">Exemplo</span>
+</div>
+<div class="pbar mt-8"><div class="landing__div4"></div></div>
+</div>
+<div class="card-glass landing__card-glass2">
+<div class="text-xs text-soft mb-8">Seu humor esta semana</div>
+<svg height="60" viewbox="0 0 220 60" width="100%"><polyline fill="none" points="0,40 30,30 60,35 90,15 120,25 150,10 180,18 210,8" stroke="#4891C1" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline></svg>
+</div>
+<div class="card-glass landing__card-glass3">
+<div class="fw-700 landing__fw-7002">Cadastro aberto</div>
+<div class="text-xs text-soft">para profissionais</div>
+</div>
+</div>
+</section>
+<section class="mt-24 landing__mt-24">
+<div class="landing__div5">
+<span class="eyebrow">Como funciona</span>
+<h2 class="landing__h2">Três passos até a primeira sessão</h2>
+</div>
+<div class="grid grid-3">
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-step1"></div>
+<h3 class="landing__h3">Questionário guiado</h3>
+<p class="text-soft text-sm mt-8">Conte sobre suas demandas, estilo de terapia preferido e disponibilidade.</p>
+</div>
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-step2"></div>
+<h3 class="landing__h3">Match por afinidade</h3>
+<p class="text-soft text-sm mt-8">Veja psicólogos com % de compatibilidade e curta quem fizer sentido pra você.</p>
+</div>
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-step3"></div>
+<h3 class="landing__h3">Sessão marcada</h3>
+<p class="text-soft text-sm mt-8">Converse pelo chat, agende seu horário e acompanhe seus atendimentos.</p>
+</div>
+</div>
+</section>
+<section class="landing__section2">
+<div>
+<h2 class="landing__h22">Pronto para dar o primeiro passo?</h2>
+<p class="landing__p">Leva menos de 5 minutos para encontrar seu match ideal.</p>
+</div>
+<button class="btn btn-lg landing__btn" onclick="showScreen('login')">Criar minha conta</button>
+</section>
+<footer class="landing__footer">
+<div>© 2026 PsicoTech. Todos os direitos reservados.</div>
+<div class="flex gap-16"><a href="#" onclick="showScreen('privacy'); return false;">Privacidade</a><a href="#" onclick="showScreen('terms'); return false;">Termos</a><a href="#" onclick="showScreen('login'); return false;">Acessar suporte</a></div>
+</footer>
+</div>
+</section>
+<!-- ---- essa parte é a nova experiência "Como funciona" (aberta ao clicar no menu ou no botão da Landing Page) ---- -->
+<section class="screen full-bleed comofunciona__screen" data-screen="como-funciona" id="scr-como-funciona">
+<div class="landing__div">
+<nav class="landing__nav">
+<div class="logo" onclick="showScreen('landing')" style="cursor:pointer;"><span class="official-logo" aria-label="PsicoTech"></span></div>
+<div class="flex gap-12">
+<button class="btn btn-ghost" onclick="showScreen('landing')"><span id="ic-cf-back"></span> Voltar</button>
+<button class="btn btn-primary" onclick="showScreen('login')">Começar agora</button>
+</div>
+</nav>
+<section class="comofunciona__hero">
+<span class="badge badge-primary mb-16">🧭 O caminho até sua primeira sessão</span>
+<h1 class="comofunciona__h1">Do cadastro à primeira sessão<br/>em <span class="landing__span">4 passos simples.</span></h1>
+<p class="text-soft comofunciona__p">Conectamos você a psicólogos com cadastro revisado com base em afinidade real — de um jeito rápido, seguro e humano.</p>
+</section>
+<section class="comofunciona__steps">
+<div class="comofunciona__line"></div>
+<div class="comofunciona__step">
+<div class="comofunciona__stepnum">01</div>
+<div class="comofunciona__icon" id="ic-cf-step1"></div>
+<h3 class="comofunciona__h3">Crie sua conta</h3>
+<p class="text-soft text-sm">Cadastre-se na plataforma em poucos minutos, com seus dados acessíveis apenas nos fluxos autorizados.</p>
+</div>
+<div class="comofunciona__step">
+<div class="comofunciona__stepnum">02</div>
+<div class="comofunciona__icon" id="ic-cf-step2"></div>
+<h3 class="comofunciona__h3">Responda ao questionário</h3>
+<p class="text-soft text-sm">Conte sobre suas necessidades, preferências e rotina para entendermos o que você procura.</p>
+</div>
+<div class="comofunciona__step">
+<div class="comofunciona__stepnum">03</div>
+<div class="comofunciona__icon" id="ic-cf-step3"></div>
+<h3 class="comofunciona__h3">Receba seus matches</h3>
+<p class="text-soft text-sm">Usamos suas respostas para apresentar psicólogos com maior compatibilidade com você.</p>
+</div>
+<div class="comofunciona__step">
+<div class="comofunciona__stepnum">04</div>
+<div class="comofunciona__icon" id="ic-cf-step4"></div>
+<h3 class="comofunciona__h3">Escolha e agende</h3>
+<p class="text-soft text-sm">Veja o perfil, converse pelo chat e agende sua sessão sem sair da plataforma.</p>
+</div>
+</section>
+<section class="landing__section2 comofunciona__cta">
+<div>
+<h2 class="landing__h22">Pronto para encontrar seu match ideal?</h2>
+<p class="landing__p">Leva menos de 5 minutos para começar.</p>
+</div>
+<button class="btn btn-lg landing__btn" onclick="showScreen('login')">Criar minha conta</button>
+</section>
+<footer class="landing__footer">
+<div>© 2026 PsicoTech. Todos os direitos reservados.</div>
+<div class="flex gap-16"><a href="#" onclick="showScreen('landing'); return false;">Voltar à página inicial</a></div>
+</footer>
+</div>
+</section>
+<!-- ---- essa parte é a tela "Para psicólogos", explicando os benefícios de atender pela plataforma ---- -->
+<section class="screen full-bleed comofunciona__screen" data-screen="para-psicologos" id="scr-para-psicologos">
+<div class="landing__div">
+<nav class="landing__nav">
+<div class="logo" onclick="showScreen('landing')" style="cursor:pointer;"><span class="official-logo" aria-label="PsicoTech"></span></div>
+<div class="flex gap-12">
+<button class="btn btn-ghost" onclick="showScreen('landing')"><span id="ic-pp-back"></span> Voltar</button>
+<button class="btn btn-primary" onclick="startPsiSignup()">Quero atender</button>
+</div>
+</nav>
+<section class="comofunciona__hero">
+<span class="badge badge-primary mb-16">🎓 Feito para psicólogos</span>
+<h1 class="comofunciona__h1">Expanda sua prática com pacientes<br/>que <span class="landing__span">combinam com você.</span></h1>
+<p class="text-soft comofunciona__p">Receba pacientes com afinidade real ao seu perfil, gerencie sua agenda e seus recebimentos em um só lugar — com todo o respaldo da validação profissional.</p>
+<div class="flex gap-12 justify-center mt-24 parapsi__cta-row">
+<button class="btn btn-primary btn-lg" onclick="startPsiSignup()">Quero atender na PsicoTech</button>
+<button class="btn btn-outline btn-lg" onclick="showScreen('login')">Já sou cadastrado</button>
+</div>
+</section>
+<div class="grid grid-4 parapsi__grid">
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-pp-step1"></div>
+<h3 class="landing__h3">CRP validado</h3>
+<p class="text-soft text-sm mt-8">Seu perfil só é liberado após a validação do seu registro profissional (RN01), o que dá mais credibilidade ao seu atendimento.</p>
+</div>
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-pp-step2"></div>
+<h3 class="landing__h3">Match por afinidade</h3>
+<p class="text-soft text-sm mt-8">Receba pacientes cujas respostas do questionário combinam com sua abordagem, especialidade e disponibilidade.</p>
+</div>
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-pp-step3"></div>
+<h3 class="landing__h3">Agenda flexível</h3>
+<p class="text-soft text-sm mt-8">Você define seus horários e formatos de atendimento, online ou presencial, no seu próprio ritmo.</p>
+</div>
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-pp-step4"></div>
+<h3 class="landing__h3">Pagamentos simplificados</h3>
+<p class="text-soft text-sm mt-8">Receba direto pela plataforma e acompanhe tudo no seu painel financeiro, sem burocracia.</p>
+</div>
+</div>
+<section class="landing__section2">
+<div>
+<h2 class="landing__h22">Pronto para fazer parte da PsicoTech?</h2>
+<p class="landing__p">O cadastro leva poucos minutos — sua validação de CRP acontece em seguida.</p>
+</div>
+<button class="btn btn-lg landing__btn" onclick="startPsiSignup()">Criar cadastro profissional</button>
+</section>
+<footer class="landing__footer">
+<div>© 2026 PsicoTech. Todos os direitos reservados.</div>
+<div class="flex gap-16"><a href="#" onclick="showScreen('landing'); return false;">Voltar à página inicial</a></div>
+</footer>
+</div>
+</section>
+<!-- ---- essa parte é a tela "Sobre", com a missão da PsicoTech e um espaço para a foto da equipe ---- -->
+<section class="screen full-bleed comofunciona__screen" data-screen="sobre" id="scr-sobre">
+<div class="landing__div">
+<nav class="landing__nav">
+<div class="logo" onclick="showScreen('landing')" style="cursor:pointer;"><span class="official-logo" aria-label="PsicoTech"></span></div>
+<div class="flex gap-12">
+<button class="btn btn-ghost" onclick="showScreen('landing')"><span id="ic-sb-back"></span> Voltar</button>
+<button class="btn btn-primary" onclick="showScreen('login')">Começar agora</button>
+</div>
+</nav>
+<section class="comofunciona__hero">
+<span class="eyebrow">Sobre a PsicoTech</span>
+<h1 class="comofunciona__h1">Tecnologia a serviço<br/>do <span class="landing__span">cuidado humano.</span></h1>
+<p class="text-soft comofunciona__p">Acreditamos que a terapia funciona melhor quando existe afinidade real entre paciente e psicólogo. Por isso criamos uma plataforma que une tecnologia, ciência e cuidado humano para aproximar as pessoas certas.</p>
+</section>
+<div class="sobre__teamphoto">
+<div class="sobre__teamphoto-icon" id="ic-sb-team"></div>
+<span class="sobre__teamphoto-label">Foto da equipe PsicoTech</span>
+</div>
+<div class="grid grid-3 parapsi__grid">
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-sb-val1"></div>
+<h3 class="landing__h3">Sigilo e ética</h3>
+<p class="text-soft text-sm mt-8">Seguimos o Código de Ética do CFP e a LGPD em cada etapa da jornada do paciente e do psicólogo.</p>
+</div>
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-sb-val2"></div>
+<h3 class="landing__h3">Ciência e evidências</h3>
+<p class="text-soft text-sm mt-8">Nosso questionário de compatibilidade é pensado para indicar o profissional mais alinhado ao seu momento.</p>
+</div>
+<div class="card card-hover landing__card">
+<div class="landing__div6" id="ic-sb-val3"></div>
+<h3 class="landing__h3">Acesso e acolhimento</h3>
+<p class="text-soft text-sm mt-8">Terapia acessível, humana e sem julgamentos, para quem quer que seja e onde quer que esteja.</p>
+</div>
+</div>
+<section class="landing__section2">
+<div>
+<h2 class="landing__h22">Quer fazer parte dessa jornada?</h2>
+<p class="landing__p">Leva menos de 5 minutos para encontrar seu match ideal.</p>
+</div>
+<button class="btn btn-lg landing__btn" onclick="showScreen('login')">Criar minha conta</button>
+</section>
+<footer class="landing__footer">
+<div>© 2026 PsicoTech. Todos os direitos reservados.</div>
+<div class="flex gap-16"><a href="#" onclick="showScreen('landing'); return false;">Voltar à página inicial</a></div>
+</footer>
+</div>
+</section>
+<!-- ---- essa parte é a tela de Login e Cadastro ---- -->
+<section class="screen full-bleed" data-screen="login" id="scr-login">
+<div class="login__div">
+<div class="login__div2">
+<div class="login__div3"></div>
+<div class="login__div4"></div>
+<div class="login__div5">
+<div class="logo login__logo"><span class="login-logo-white" aria-label="PsicoTech"></span></div>
+<h2 class="login__h2">Tecnologia a serviço do cuidado humano.</h2>
+<p class="login__p">Conectamos pacientes e psicólogos com base em afinidade real — não só em agenda disponível.</p>
+<div class="card-glass mt-24 login__card-glass">
+<div class="flex items-center gap-12">
+<div class="avatar login__avatar">JG</div>
+<div>
+<div class="login__div6">Responda ao questionário e encontre profissionais com preferências compatíveis.</div>
+<div class="text-xs login__text-xs">Seu primeiro passo na plataforma</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="login__div7">
+<div class="login__div8">
+<div class="tabs mb-16 login__tabs">
+<button class="tab-btn active login__tab-btn" onclick="setLoginTab(this,'entrar')">Entrar</button>
+<button class="tab-btn login__tab-btn" onclick="setLoginTab(this,'cadastrar')">Cadastrar</button>
+</div>
+<div class="tabs mb-24 login__tabs2">
+<button class="chip selected" id="chip-paciente" onclick="setUserType('paciente')">🙂 Sou paciente</button>
+<button class="chip" id="chip-psicologo" onclick="setUserType('psicologo')">🎓 Sou psicólogo</button>
+</div>
+<h2 class="login__h22" id="login-title">Bem-vindo(a) de volta</h2>
+<div class="field">
+<label>E-mail</label>
+<div class="input-icon-wrap"><span id="ic-mail"></span><input class="input" placeholder="voce@email.com"/></div>
+</div>
+<div class="field">
+<label>Senha</label>
+<div class="input-icon-wrap"><span id="ic-lock"></span><input class="input" placeholder="••••••••" type="password"/></div>
+</div>
+<div class="flex justify-between items-center mb-16" id="login-remember-row">
+<label class="checkbox-row"><input type="checkbox"/> Lembrar de mim</label>
+<a class="text-sm login__text-sm" href="#">Esqueci a senha</a>
+</div>
+<!-- ---- essa parte só aparece quando a pessoa escolhe "Sou psicólogo" + aba "Cadastrar" ---- -->
+<div class="field crp-signup hidden" id="psi-crp-fields">
+<div class="divider login__divider"></div>
+<div class="crp-signup__title">
+<span data-ic="crp"></span>
+<div>
+<div class="fw-600 text-sm">Validação de registro profissional</div>
+<div class="text-xs text-soft">Obrigatório antes de atender pacientes na plataforma (RN01)</div>
+</div>
+</div>
+<div class="field">
+<label>Número do CRP</label>
+<div class="input-icon-wrap"><span data-ic="crp"></span><input class="input" placeholder="Ex: 06/123456"/></div>
+</div>
+<div class="grid grid-2 gap-16 crp-signup__uploads">
+<label class="file-upload-btn">
+<span data-ic="upload"></span> Diploma de Psicologia
+<input class="upload-input" type="file"/>
+</label>
+<label class="file-upload-btn">
+<span data-ic="crp"></span> Registro no CRP
+<input class="upload-input" type="file"/>
+</label>
+</div>
+<label class="checkbox-row crp-signup__checkbox"><input type="checkbox"/> Declaro que as informações são verdadeiras e estou de acordo com o Código de Ética do CFP</label>
+<div class="crp-signup__note"><span data-ic="shield"></span> Seus documentos serão analisados pela nossa equipe e confirmados junto ao CRP antes da liberação do seu perfil para pacientes.</div>
+</div>
+<button class="btn btn-primary btn-block btn-lg" id="login-submit-btn" onclick="loginGo()">Entrar na conta</button>
+<div class="flex items-center gap-12 mt-20 login__flex">
+<div class="divider login__divider"></div> ou continue com <div class="divider login__divider"></div>
+</div>
+<div class="flex gap-12 mt-16">
+<button class="btn btn-outline btn-block">Google</button>
+<button class="btn btn-outline btn-block">Apple</button>
+</div>
+<p class="text-center text-sm text-soft mt-24 login__text-center">Não tem conta? <a class="login__a" href="#" onclick="setLoginTab(document.querySelectorAll('.tabs .tab-btn')[1],'cadastrar'); return false;">Cadastre-se</a></p>
+</div>
+</div>
+</div>
+</section>
+<section class="screen full-bleed" id="scr-privacy"><div class="live-legal"><h1>Privacidade e seus dados</h1><p>A PsicoTech guarda dados de cadastro, preferências, agendamentos e as informações que você optar por registrar.</p><p>O questionário é utilizado para calcular afinidade com os perfis profissionais. O histórico de humor é privado do paciente. As mensagens são acessíveis aos participantes do match, e as anotações clínicas ficam disponíveis ao profissional responsável.</p><p>A administração tem acesso a cadastros, documentos profissionais e chamados de suporte. Não envie informações clínicas em chamados administrativos.</p><p>Mensagens, questionários, perfis, documentos e anotações são criptografados no armazenamento. Sua sessão utiliza um cookie necessário ao login. As fontes desta página são carregadas do Google Fonts.</p><p>Você pode exportar os dados pessoais disponíveis na área Meu perfil ou solicitar correção e exclusão pelo suporte. A solicitação é analisada pela administração considerando as obrigações aplicáveis aos registros profissionais.</p><p>Pagamentos e chamadas, quando configurados, utilizam os provedores indicados na interface, que possuem seus próprios termos.</p><p>Esta instalação está em preparação operacional. Antes de abrir o cadastro ao público, o responsável pela plataforma precisa identificar a organização operadora, publicar um canal de contato externo e definir prazos de retenção e políticas aplicáveis.</p><button class="btn btn-primary mt-24" onclick="showScreen('login')">Voltar</button></div></section><section class="screen full-bleed" id="scr-terms"><div class="live-legal"><h1>Condições de uso</h1><p>Use informações verdadeiras no cadastro. Contas de profissionais só aparecem na busca após revisão administrativa dos documentos e preenchimento do perfil.</p><p>A compatibilidade indica afinidade entre respostas e dados declarados. Ela não é diagnóstico, indicação clínica automática ou promessa de resultado terapêutico.</p><p>Um match depende da aceitação do psicólogo. Valores e horários são definidos pelo profissional. O prazo de cancelamento é indicado na agenda; situações fora do prazo e pagamentos já realizados devem ser tratados pelo suporte.</p><p>As chamadas acontecem na sala indicada pelo profissional. Cobranças online só ficam disponíveis quando a administração configurar o provedor. Não informe cartão ou credenciais bancárias no chat.</p><p>O chat e o suporte não são canais de emergência. Procure um serviço de emergência local quando precisar de atendimento imediato.</p><p>Estas condições operacionais devem ser complementadas pelo responsável antes do lançamento ao público.</p><button class="btn btn-primary mt-24" onclick="showScreen('login')">Voltar</button></div></section></div><!-- /fullbleed-wrap -->
+<!-- ============================================================ -->
+<!-- essa parte é a ESTRUTURA DO APP: cabeçalho (topbar) + menu lateral (sidebar) + conteúdo -->
+<!-- ============================================================ -->
+<div class="app app-shell__app" id="app-shell">
+<header class="topbar">
+<div class="flex items-center gap-16">
+<button class="mobile-menu-btn btn-icon" id="ic-menu-btn" onclick="toggleSidebar()"></button>
+<div class="logo app-shell__logo" onclick="goHome()"><span class="official-logo official-logo--topbar" aria-label="PsicoTech"></span></div>
+</div>
+<div class="role-switch">
+<button class="active" data-role="paciente" onclick="switchRole('paciente')">Paciente</button>
+<button data-role="psicologo" onclick="switchRole('psicologo')">Psicólogo</button>
+<button data-role="admin" onclick="switchRole('admin')">Admin</button>
+</div>
+<div class="topbar-right">
+<div class="input-icon-wrap topbar-search-wrap__input-icon-wrap" id="topbar-search-wrap">
+<span id="ic-search-top"></span><input class="input topbar-search-wrap__input" placeholder="Buscar..."/>
+</div>
+<button class="btn-icon ic-bell-btn__btn-icon" id="ic-bell-btn"><span class="notif-dot"></span></button>
+<button class="btn-icon" id="ic-logout-btn" onclick="showScreen('landing')" title="Sair"></button>
+<div class="avatar topbar-avatar__avatar" id="topbar-avatar">PA</div>
+</div>
+</header>
+<div class="app-body">
+<div class="sidebar-backdrop" id="sidebar-backdrop" onclick="toggleSidebar(false)"></div>
+<aside class="sidebar" id="sidebar"></aside>
+<main class="content" id="content"><section class="screen" id="scr-p-quiz-intro">
+<div class="quizintro__wrap">
+<div class="card quizintro__card">
+<div class="quizintro__icon" id="ic-quizintro"></div>
+<span class="eyebrow">Bem-vindo(a) à PsicoTech</span>
+<h1 class="quizintro__h1">Vamos encontrar seu match ideal.</h1>
+<p class="text-soft quizintro__p">Antes de começar, precisamos conhecer um pouco sobre você. Leva menos de 5 minutos e vai nos ajudar a indicar os psicólogos com maior compatibilidade com o seu momento.</p>
+<div class="flex gap-20 quizintro__flex">
+<div class="flex items-center gap-8 text-sm text-soft"><span id="ic-quizintro-check1"></span> 8 perguntas rápidas</div>
+<div class="flex items-center gap-8 text-sm text-soft"><span id="ic-quizintro-check2"></span> Respostas privadas na sua conta</div>
+</div>
+<button class="btn btn-primary btn-lg btn-block mt-24" onclick="startQuiz()">Começar questionário</button>
+</div>
+</div>
+</section>
+<section class="screen" id="scr-p-questionario">
+<div class="p-questionario__div">
+<div class="flex justify-between items-center mb-16">
+<span class="text-sm fw-600 text-soft" id="quiz-counter">Pergunta 1 de 8</span>
+<span class="text-sm text-soft" id="quiz-percent">12%</span>
+</div>
+<div class="pbar mb-24"><div class="p-questionario__div2" id="quiz-progress"></div></div>
+<div class="card p-questionario__card">
+<span class="eyebrow" id="quiz-category">Necessidades</span>
+<h2 class="mt-8 mb-20 p-questionario__mt-8" id="quiz-title"></h2>
+<p class="text-soft text-sm mb-20" id="quiz-help"></p>
+<div class="quiz-options" id="quiz-options"></div>
+<p class="quiz-error" id="quiz-error" role="alert"></p>
+<div class="divider"></div>
+<div class="flex justify-between quiz-actions">
+<button class="btn btn-outline" id="quiz-back" onclick="previousQuizQuestion()">Voltar</button>
+<button class="btn btn-primary" id="quiz-next" onclick="nextQuizQuestion()">Continuar</button>
+</div>
+</div>
+</div>
+</section></main>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- essa parte é o POP-UP de "Deu match!" que aparece por cima da tela -->
+<!-- ============================================================ -->
+<script src="script.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+1. Se você passar essa pasta para o seu PC, vai abrir de boa?
+
+Sim, perfeitamente! Para rodar no seu computador:
+
+Copie toda a pasta psicotech-main para o seu PC (ela já contém o arquivo .env com a conexão do Supabase).
+No seu PC, a única coisa necessária é ter o Node.js (versão 22 ou superior) instalado. Se ainda não tiver, baixe a versão LTS/Latest em nodejs.org
+.
+Basta dar dois cliques no arquivo INICIAR.bat e abrir no navegador: 👉 http://localhost:3000
+2. Onde visualizar o link para quando precisar abrir?
+
+Você tem duas formas fáceis de sempre acessar o link:
+
+Link direto (salve nos favoritos do navegador):
+👉 https://psicotech-psi.vercel.app
+Pelo painel da Vercel:
+Acesse vercel.com
+ e faça login com seu e-mail.
+Na lista de projetos, clique em psicotech. O link oficial de produção sempre fica em destaque logo no topo da página.
+3. Como criar as contas (Admin e Psicóloga)
+A. Conta de Administrador:
+
+Você já possui uma conta de admin cadastrada no seu banco Supabase com o e-mail:
+
+E-mail: joaoguilhermevieirademelo@gmail.com (papel: admin)
+
+Se você souber a senha, já pode entrar diretamente no site com ela!
+Caso queira definir uma nova senha para essa conta ou criar outro admin:
+
+Opção 1 (via script): Dê dois cliques em CRIAR-ADMIN.bat, digite o e-mail, nome e senha desejados.
+Opção 2 (faço por aqui): Se preferir, me diga qual e-mail e senha deseja usar que eu cadastro/atualizo o admin diretamente no seu Supabase agora mesmo.
+B. Conta de Psicóloga:
+
+Você já tem um cadastro de psicólogo no banco (joaogta8@gmail.com). Para criar uma nova conta de psicóloga:
+
+Abra o site (https://psicotech-psi.vercel.app
+).
+Clique em Entrar (ou "Começar agora").
+Clique na aba Cadastrar.
+Clique no botão 🎓 Sou psicólogo.
+Preencha o nome, e-mail, senha e o número de registro do CRP (ex: 06/123456) e clique em Criar conta.
+
+💡 Dica importante para psicólogos:
+Por segurança do CFP, contas recém-criadas de psicólogos só aparecem na busca dos pacientes após o administrador aprovar o cadastro. Depois de criar a conta da psicóloga, basta entrar com a conta de Admin, ir na aba Psicólogos e clicar em Aprovar.

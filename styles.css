@@ -1,0 +1,1518 @@
+/* ==========================================================================
+   PSICOTECH — FOLHA DE ESTILOS (CSS)
+   Todo alinhamento, espaçamento e cor fica aqui (nada de estilo dentro do
+   HTML). Valores escritos direto em cada regra, sem variáveis (:root).
+   Dividido em blocos comentados — use Ctrl+F para achar rápido.
+   ========================================================================== */
+
+/* ======================================================
+   1. BASE DO SITE (reset, fonte padrão, scrollbar)
+   ====================================================== */
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%;}
+body{
+  font-family:'Inter',sans-serif;
+  background:#F8FAFC;
+  color:#1F2937;
+  -webkit-font-smoothing:antialiased;
+  font-size:15px;
+  line-height:1.5;
+}
+h1,h2,h3,h4,.font-display{font-family:'Poppins',sans-serif; color:#1F2937; letter-spacing:-0.01em;}
+button{font-family:inherit; cursor:pointer;}
+a{text-decoration:none; color:inherit;}
+input,textarea,select{font-family:inherit;}
+::-webkit-scrollbar{width:8px; height:8px;}
+::-webkit-scrollbar-thumb{background:#CBD8E3; border-radius:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+svg{display:block;}
+.icon{width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0;}
+
+/* ======================================================
+   2. BOTÕES (botão azul, contorno, fantasma, ícone, etc)
+   ====================================================== */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:11px 22px; border-radius:100px; border:none; font-weight:600; font-size:14.5px;
+  transition:all .18s ease; white-space:nowrap;
+}
+.btn:active{transform:scale(0.97);}
+.btn-primary{background:linear-gradient(135deg,#4891C1 0%, #36759E 100%); color:#fff; box-shadow:0 6px 16px rgba(72,145,193,0.35);}
+.btn-primary:hover{box-shadow:0 8px 22px rgba(72,145,193,0.45); transform:translateY(-1px);}
+.btn-secondary{background:#EAF3F9; color:#36759E;}
+.btn-secondary:hover{background:#DCEBF4;}
+.btn-outline{background:transparent; color:#1F2937; border:1.5px solid #E6ECF2;}
+.btn-outline:hover{border-color:#70A9CE; color:#36759E; background:#F3F9FC;}
+.btn-ghost{background:transparent; color:#5B6472;}
+.btn-ghost:hover{background:#F1F5F9;}
+.btn-danger{background:#FBEBE9; color:#E0685E;}
+.btn-sm{padding:7px 16px; font-size:13px;}
+.btn-lg{padding:14px 30px; font-size:15.5px;}
+.btn-icon{
+  width:40px; height:40px; min-width:40px; min-height:40px; padding:0; border-radius:50%;
+  background:#F1F5F9; color:#5B6472; position:relative;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  line-height:0;
+}
+.btn-icon:hover{background:#E6ECF2;}
+.btn-icon svg{flex-shrink:0; display:block; margin:0;}
+.btn-block{width:100%;}
+.btn:disabled{opacity:.5; cursor:not-allowed;}
+
+/* ======================================================
+   3. CAMPOS DE FORMULÁRIO (inputs, textarea, selects)
+   ====================================================== */
+.field{display:flex; flex-direction:column; gap:6px; margin-bottom:16px;}
+.field label{font-size:13px; font-weight:600; color:#5B6472;}
+.input, .textarea, select.input{
+  border:1.5px solid #E6ECF2; border-radius:12px; padding:12px 14px;
+  font-size:14.5px; background:#fff; color:#1F2937; transition:border-color .15s, box-shadow .15s;
+  width:100%;
+}
+.input:focus, .textarea:focus{outline:none; border-color:#70A9CE; box-shadow:0 0 0 4px rgba(112,169,206,0.18);}
+.input-icon-wrap{position:relative;}
+.input-icon-wrap .icon{position:absolute; left:14px; top:50%; transform:translateY(-50%); color:#94A3B8;}
+.input-icon-wrap .input{padding-left:42px;}
+.textarea{resize:vertical; min-height:90px;}
+.checkbox-row{display:flex; align-items:center; gap:9px; font-size:13.5px; color:#5B6472;}
+
+/* ======================================================
+   4. CARDS (caixinhas brancas usadas em quase toda tela)
+   ====================================================== */
+.card{
+  background:#FFFFFF; border-radius:24px; box-shadow:0 1px 2px rgba(31,41,55,0.05), 0 1px 1px rgba(31,41,55,0.03);
+  border:1px solid #E6ECF2; padding:24px;
+}
+.card-glass{
+  background:rgba(255,255,255,0.66); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.5); border-radius:24px; box-shadow:0 8px 24px rgba(31,45,66,0.08), 0 2px 6px rgba(31,45,66,0.04);
+}
+.card-hover{transition:transform .18s ease, box-shadow .18s ease;}
+.card-hover:hover{transform:translateY(-3px); box-shadow:0 8px 24px rgba(31,45,66,0.08), 0 2px 6px rgba(31,45,66,0.04);}
+
+/* ======================================================
+   5. BADGES E CHIPS (etiquetas coloridas e filtros clicáveis)
+   ====================================================== */
+.badge{display:inline-flex; align-items:center; gap:5px; padding:4px 11px; border-radius:100px; font-size:12px; font-weight:600;}
+.badge-primary{background:#EAF3F9; color:#36759E;}
+.badge-success{background:#E8F6F0; color:#4CAF8A;}
+.badge-warning{background:#FBF1E0; color:#E3A340;}
+.badge-danger{background:#FBEBE9; color:#E0685E;}
+.badge-neutral{background:#F1F5F9; color:#5B6472;}
+.chip{
+  display:inline-flex; align-items:center; gap:6px; padding:9px 16px; border-radius:100px;
+  border:1.5px solid #E6ECF2; font-size:13.5px; font-weight:500; color:#5B6472; background:#fff;
+  cursor:pointer; transition:all .15s;
+}
+.chip.selected, .chip:hover{border-color:#4891C1; color:#36759E; background:#EAF3F9;}
+
+/* ======================================================
+   6. ABAS (tabs usadas em perfil, login, avaliações etc)
+   ====================================================== */
+.tabs{display:flex; gap:4px; background:#EEF2F6; padding:5px; border-radius:100px; width:fit-content;}
+.tab-btn{padding:9px 20px; border:none; background:transparent; border-radius:100px; font-weight:600; font-size:13.5px; color:#5B6472;}
+.tab-btn.active{background:#fff; color:#36759E; box-shadow:0 1px 2px rgba(31,41,55,0.05), 0 1px 1px rgba(31,41,55,0.03);}
+
+/* ======================================================
+   7. ESTRUTURA DO APP (essa parte é o cabeçalho/topbar,
+      o menu lateral/sidebar e a área de conteúdo)
+   ====================================================== */
+.app{min-height:100vh; display:flex; flex-direction:column;}
+.topbar{
+  height:68px; display:flex; align-items:center; justify-content:space-between; padding:0 28px;
+  background:rgba(255,255,255,0.66); backdrop-filter:blur(14px); border-bottom:1px solid #E6ECF2;
+  position:sticky; top:0; z-index:40;
+}
+.logo{display:flex; align-items:center; gap:9px; font-family:'Poppins'; font-weight:700; font-size:19px; color:#36759E;}
+.logo-mark{width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,#4891C1 0%, #36759E 100%); display:flex; align-items:center; justify-content:center; color:#fff;}
+.official-logo{
+  display:block;
+  width:175px;
+  height:48px;
+  background-image:url('logo-small.png');
+  background-repeat:no-repeat;
+  background-size:215px 147px;
+  background-position:-40px -39px;
+  flex-shrink:0;
+}
+.official-logo--login{
+  width:220px;
+  height:60px;
+  background-size:270px 185px;
+  background-position:-50px -49px;
+}
+.official-logo--topbar{width:175px;}
+.login-logo-white{
+  display:block;
+  width:150px;
+  height:100px;
+  background-image:url('logo2.png');
+  background-repeat:no-repeat;
+  background-size:308px 308px;
+  background-position:-84px -82px;
+  flex-shrink:0;
+}
+.role-switch{display:flex; gap:6px; background:#EEF2F6; padding:4px; border-radius:100px;}
+.role-switch button{padding:8px 16px; border:none; background:transparent; border-radius:100px; font-size:13px; font-weight:600; color:#5B6472;}
+.role-switch button.active{background:linear-gradient(135deg,#4891C1 0%, #36759E 100%); color:#fff; box-shadow:0 4px 10px rgba(72,145,193,0.3);}
+.topbar-right{display:flex; align-items:center; gap:10px;}
+.avatar{border-radius:50%; object-fit:cover; background:linear-gradient(135deg, rgba(72,145,193,0.14), rgba(112,169,206,0.10)); display:flex; align-items:center; justify-content:center; color:#36759E; font-weight:700; font-family:'Poppins';}
+.notif-dot{position:absolute; top:6px; right:6px; width:8px; height:8px; border-radius:50%; background:#E0685E; border:2px solid #fff;}
+
+.app-body{display:flex; flex:1; min-height:calc(100vh - 68px);}
+.sidebar{
+  width:250px; background:#fff; border-right:1px solid #E6ECF2; padding:20px 14px; flex-shrink:0;
+  display:flex; flex-direction:column; gap:2px; position:sticky; top:68px; height:calc(100vh - 68px); overflow-y:auto;
+}
+.side-label{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#94A3B8; padding:14px 12px 6px;}
+.side-link{
+  display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:12px; color:#5B6472;
+  font-size:14px; font-weight:500; border:none; background:transparent; width:100%; text-align:left;
+}
+.side-link:hover{background:#F3F9FC; color:#36759E;}
+.side-link.active{background:linear-gradient(135deg,#4891C1 0%, #36759E 100%); color:#fff; font-weight:600; box-shadow:0 6px 14px rgba(72,145,193,0.3);}
+.side-link .icon{width:18px; height:18px;}
+
+.content{flex:1; padding:32px; max-width:1400px; width:100%; margin:0 auto;}
+.screen{display:none;}
+.screen.active{display:block; animation:fadein .28s ease;}
+@keyframes fadein{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+.page-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:26px; flex-wrap:wrap; gap:14px;}
+.page-head h1{font-size:26px; font-weight:700;}
+.page-head p{color:#5B6472; font-size:14px; margin-top:4px;}
+.eyebrow{font-size:12px; font-weight:700; color:#4891C1; text-transform:uppercase; letter-spacing:.08em;}
+
+.grid{display:grid; gap:20px;}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+.flex{display:flex;}
+.flex-col{display:flex; flex-direction:column;}
+.gap-8{gap:8px;} .gap-12{gap:12px;} .gap-16{gap:16px;} .gap-20{gap:20px;}
+.items-center{align-items:center;} .justify-between{justify-content:space-between;}
+.text-soft{color:#5B6472;} .text-faint{color:#94A3B8;}
+.text-sm{font-size:13px;} .text-xs{font-size:12px;}
+.fw-600{font-weight:600;} .fw-700{font-weight:700;}
+.mt-8{margin-top:8px;} .mt-12{margin-top:12px;} .mt-16{margin-top:16px;} .mt-20{margin-top:20px;} .mt-24{margin-top:24px;}
+.mb-8{margin-bottom:8px;} .mb-12{margin-bottom:12px;} .mb-16{margin-bottom:16px;}
+.w-full{width:100%;}
+.divider{height:1px; background:#E6ECF2; margin:18px 0;}
+
+/* ---- cards de estatística (números grandes dos dashboards) ---- */
+.stat-card{padding:20px 22px; border-radius:24px; background:#fff; border:1px solid #E6ECF2; box-shadow:0 1px 2px rgba(31,41,55,0.05), 0 1px 1px rgba(31,41,55,0.03);}
+.stat-card .stat-icon{width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:14px;}
+.stat-card .stat-value{font-size:26px; font-weight:700; font-family:'Poppins';}
+.stat-card .stat-label{font-size:13px; color:#5B6472; margin-top:2px;}
+.stat-trend{font-size:12px; font-weight:700; display:inline-flex; align-items:center; gap:3px; margin-top:8px;}
+
+/* ---- anel de progresso (círculo de % de compatibilidade) ---- */
+.ring-wrap{position:relative; display:inline-flex; align-items:center; justify-content:center;}
+.ring-label{position:absolute; font-family:'Poppins'; font-weight:700; color:#36759E;}
+
+/* ---- barra de progresso linear ---- */
+.pbar{height:8px; background:#EEF2F6; border-radius:100px; overflow:hidden;}
+.pbar > div{height:100%; background:linear-gradient(135deg,#4891C1 0%, #36759E 100%); border-radius:100px;}
+
+/* ---- tabelas (listas de usuários, pacientes, financeiro) ---- */
+table{width:100%; border-collapse:collapse;}
+th{text-align:left; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:#94A3B8; padding:10px 14px; border-bottom:1.5px solid #E6ECF2; font-weight:700;}
+td{padding:14px; border-bottom:1px solid #E6ECF2; font-size:14px;}
+tr:last-child td{border-bottom:none;}
+.table-row-hover:hover{background:#F8FBFD;}
+
+/* ---- modal (janela flutuante, ex: tela de "Deu match!") ---- */
+.modal-overlay{position:fixed; inset:0; background:rgba(31,41,55,0.45); backdrop-filter:blur(3px); display:none; align-items:center; justify-content:center; z-index:100; padding:20px;}
+.modal-overlay.active{display:flex;}
+.modal-box{background:#fff; border-radius:24px; box-shadow:0 20px 48px rgba(31,45,66,0.12), 0 6px 16px rgba(31,45,66,0.06); max-width:420px; width:100%; padding:30px; position:relative;}
+.modal-close{position:absolute; top:16px; right:16px; background:#F1F5F9; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#5B6472;}
+
+/* ---- balões de conversa do chat ---- */
+.chat-bubble{max-width:72%; padding:12px 16px; border-radius:18px; font-size:14px; line-height:1.45;}
+.chat-bubble.mine{background:linear-gradient(135deg,#4891C1 0%, #36759E 100%); color:#fff; border-bottom-right-radius:5px; align-self:flex-end;}
+.chat-bubble.theirs{background:#F1F5F9; color:#1F2937; border-bottom-left-radius:5px; align-self:flex-start;}
+.chat-time{font-size:10.5px; color:#94A3B8; margin-top:4px;}
+
+/* ---- bolinhas decorativas (não usadas em telas, reserva) ---- */
+.win-dots{display:flex; gap:6px;}
+.win-dots span{width:9px; height:9px; border-radius:50%; background:#E2E8F0;}
+
+@media(max-width:980px){
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .grid-3{grid-template-columns:repeat(2,1fr);}
+  .sidebar{position:fixed; left:-260px; top:68px; z-index:60; box-shadow:0 20px 48px rgba(31,45,66,0.12), 0 6px 16px rgba(31,45,66,0.06); transition:left .25s;}
+  .sidebar.open{left:0;}
+  .role-switch{display:none;}
+  .mobile-menu-btn{display:flex !important;}
+}
+@media(max-width:640px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
+  .content{padding:18px;}
+  .topbar{padding:0 16px;}
+  .topbar-right{gap:6px;}
+  .topbar .btn-icon{width:36px; height:36px; min-width:36px; min-height:36px;}
+  .topbar-avatar__avatar{width:34px; height:34px; font-size:12px;}
+  .logo{font-size:16px;}
+  .official-logo{width:145px; height:42px; background-size:178px 122px; background-position:-33px -32px;}
+  .official-logo--login{width:190px; height:54px; background-size:233px 160px; background-position:-43px -42px;}
+  .official-logo--topbar{width:145px;}
+  .login-logo-white{width:120px; height:80px; background-size:246px 246px; background-position:-67px -65px;}
+}
+.mobile-menu-btn{display:none; background:none; border:none; color:#5B6472; align-items:center; justify-content:center;}
+
+/* ---- telas sem menu (Landing Page e Login ocupam a tela toda) ---- */
+.chrome-only{}
+.full-bleed{display:none;}
+.full-bleed.active{display:block; animation:fadein .3s ease;}
+
+
+/* ==========================================================================
+   8. ESTILOS ESPECÍFICOS DE CADA TELA
+   (antes esses ajustes estavam "inline" dentro do HTML — agora cada um
+   virou uma classe aqui no CSS, separado por tela, do jeito que você usa)
+   ========================================================================== */
+
+/* ---- PÁGINA INICIAL (LANDING PAGE) ---- */
+.landing__screen{
+  background:#F8FAFC;
+}
+.landing__div{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 28px;
+}
+.landing__nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px 0;
+}
+.landing__flex{
+  font-size:14px;
+  font-weight:500;
+  color:#5B6472;
+}
+.landing__section{
+  display:flex;
+  align-items:center;
+  gap:56px;
+  padding:56px 0 40px;
+}
+.landing__div2{
+  flex:1.1;
+}
+.landing__h1{
+  font-size:44px;
+  line-height:1.14;
+  font-weight:700;
+  margin-top:14px;
+}
+.landing__span{
+  color:#36759E;
+}
+.landing__text-soft{
+  font-size:16.5px;
+  max-width:480px;
+}
+.landing__flex2{
+  font-size:13px;
+  color:#5B6472;
+}
+.landing__div3{
+  flex:1;
+  position:relative;
+  min-height:420px;
+}
+.landing__card-glass{
+  position:absolute;
+  top:0;
+  right:20px;
+  width:300px;
+  padding:20px;
+}
+.landing__avatar{
+  width:52px;
+  height:52px;
+  font-size:16px;
+}
+.landing__fw-700{
+  color:#4CAF8A;
+}
+.landing__div4{
+  width:94%;
+}
+.landing__card-glass2{
+  position:absolute;
+  top:230px;
+  left:0;
+  width:260px;
+  padding:18px;
+}
+.landing__card-glass3{
+  position:absolute;
+  bottom:0;
+  right:60px;
+  width:180px;
+  padding:16px;
+  text-align:center;
+}
+.landing__fw-7002{
+  font-size:22px;
+  color:#36759E;
+}
+.landing__mt-24{
+  padding:50px 0;
+}
+.landing__div5{
+  text-align:center;
+  margin-bottom:36px;
+}
+.landing__h2{
+  font-size:28px;
+  margin-top:8px;
+}
+.landing__card{
+  text-align:center;
+}
+.landing__div6{
+  width:52px;
+  height:52px;
+  border-radius:16px;
+  background:linear-gradient(135deg, rgba(72,145,193,0.14), rgba(112,169,206,0.10));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 16px;
+}
+.landing__h3{
+  font-size:17px;
+}
+.landing__section2{
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  border-radius:24px;
+  padding:44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:40px 0;
+  color:#fff;
+  flex-wrap:wrap;
+  gap:20px;
+}
+.landing__h22{
+  color:#fff;
+  font-size:24px;
+}
+.landing__p{
+  color:rgba(255,255,255,0.85);
+  margin-top:6px;
+}
+.landing__btn{
+  background:#fff;
+  color:#36759E;
+}
+.landing__footer{
+  padding:30px 0 50px;
+  display:flex;
+  justify-content:space-between;
+  color:#94A3B8;
+  font-size:13px;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* ---- NOVA EXPERIÊNCIA "COMO FUNCIONA" (aberta pelo menu ou pelo botão da Landing Page) ---- */
+.comofunciona__screen{
+  background:#F8FAFC;
+}
+#ic-cf-back svg{
+  transform:scaleX(-1); /* a seta usada no site aponta pra direita; aqui invertemos para indicar "voltar" */
+}
+.comofunciona__hero{
+  text-align:center;
+  max-width:680px;
+  margin:24px auto 8px;
+  padding:32px 0 8px;
+  animation:comofunciona-fadeup .5s ease both;
+}
+.comofunciona__h1{
+  font-size:36px;
+  line-height:1.18;
+  font-weight:700;
+  margin-top:16px;
+}
+.comofunciona__p{
+  font-size:16px;
+  margin-top:14px;
+}
+.comofunciona__steps{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  padding:56px 0 40px;
+}
+.comofunciona__line{
+  position:absolute;
+  top:98px;
+  left:12.5%;
+  right:12.5%;
+  height:2px;
+  background:linear-gradient(90deg, rgba(72,145,193,0.05), rgba(72,145,193,0.35) 15%, rgba(72,145,193,0.35) 85%, rgba(72,145,193,0.05));
+}
+.comofunciona__step{
+  position:relative;
+  background:#fff;
+  border:1px solid #E6ECF2;
+  border-radius:24px;
+  padding:28px 22px;
+  text-align:center;
+  box-shadow:0 1px 2px rgba(31,41,55,0.05), 0 1px 1px rgba(31,41,55,0.03);
+  transition:transform .18s ease, box-shadow .18s ease;
+  animation:comofunciona-fadeup .55s ease both;
+}
+.comofunciona__step:nth-child(2){animation-delay:.08s;}
+.comofunciona__step:nth-child(3){animation-delay:.16s;}
+.comofunciona__step:nth-child(4){animation-delay:.24s;}
+.comofunciona__step:nth-child(5){animation-delay:.32s;}
+.comofunciona__step:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(31,45,66,0.08), 0 2px 6px rgba(31,45,66,0.04);
+}
+.comofunciona__stepnum{
+  font-family:'Poppins', sans-serif;
+  font-weight:700;
+  font-size:13px;
+  color:#70A9CE;
+  letter-spacing:.06em;
+  margin-bottom:10px;
+}
+.comofunciona__icon{
+  width:56px;
+  height:56px;
+  border-radius:16px;
+  background:linear-gradient(135deg, rgba(72,145,193,0.14), rgba(112,169,206,0.10));
+  color:#36759E;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 16px;
+}
+.comofunciona__h3{
+  font-size:16.5px;
+  margin-bottom:6px;
+}
+.comofunciona__cta{
+  margin-bottom:50px;
+}
+@keyframes comofunciona-fadeup{
+  from{opacity:0; transform:translateY(14px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@media(max-width:980px){
+  .comofunciona__steps{grid-template-columns:repeat(2,1fr);}
+  .comofunciona__line{display:none;}
+}
+@media(max-width:640px){
+  .comofunciona__steps{grid-template-columns:1fr;}
+  .comofunciona__h1{font-size:28px;}
+}
+
+/* ---- TELA "PARA PSICÓLOGOS" ---- */
+.parapsi__cta-row{
+  flex-wrap:wrap;
+}
+.parapsi__grid{
+  margin:8px 0 48px;
+}
+
+/* ---- TELA "SOBRE" ---- */
+.sobre__teamphoto{
+  max-width:760px;
+  margin:8px auto 48px;
+  aspect-ratio:16/6;
+  border-radius:24px;
+  background:linear-gradient(135deg, rgba(72,145,193,0.14) 0%, rgba(112,169,206,0.10) 100%);
+  border:1.5px dashed #B9D3E4;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  animation:comofunciona-fadeup .5s ease both;
+}
+.sobre__teamphoto-icon{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  background:#fff;
+  color:#36759E;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 16px rgba(72,145,193,0.2);
+}
+.sobre__teamphoto-label{
+  font-family:'Poppins', sans-serif;
+  font-weight:600;
+  font-size:14px;
+  color:#36759E;
+}
+@media(max-width:640px){
+  .sobre__teamphoto{aspect-ratio:4/5;}
+}
+
+/* ---- LOGIN / CADASTRO — ÁREA DE VALIDAÇÃO DE CRP (aparece só no cadastro de psicólogo) ---- */
+.hidden{
+  display:none;
+}
+.crp-signup__title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:16px;
+  padding:10px 12px;
+  background:#EAF3F9;
+  border-radius:12px;
+  color:#36759E;
+}
+.crp-signup__uploads{
+  margin-bottom:16px;
+}
+.file-upload-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  justify-content:center;
+  padding:14px 10px;
+  border:1.5px dashed #E6ECF2;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:600;
+  color:#5B6472;
+  cursor:pointer;
+  text-align:center;
+  transition:all .15s;
+}
+.file-upload-btn:hover{
+  border-color:#70A9CE;
+  color:#36759E;
+  background:#F3F9FC;
+}
+.upload-input{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  opacity:0;
+}
+.crp-signup__checkbox{
+  align-items:flex-start;
+  margin-bottom:14px;
+  line-height:1.4;
+}
+.crp-signup__note{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  font-size:12px;
+  color:#5B6472;
+  background:#F8FAFC;
+  border-radius:12px;
+  padding:12px;
+}
+/* ---- LOGIN / CADASTRO — LAYOUT GERAL DA TELA ---- */
+.login__div{
+  min-height:100vh;
+  display:flex;
+}
+.login__div2{
+  flex:1;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+  overflow:hidden;
+}
+.login__div3{
+  position:absolute;
+  width:340px;
+  height:340px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  top:-80px;
+  left:-80px;
+}
+.login__div4{
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  bottom:-60px;
+  right:-40px;
+}
+.login__div5{
+  position:relative;
+  z-index:2;
+  color:#fff;
+  max-width:380px;
+}
+.login__logo{
+  color:#fff;
+  margin-bottom:30px;
+}
+.login__logo-mark{
+  background:rgba(255,255,255,0.2);
+}
+.login__h2{
+  color:#fff;
+  font-size:28px;
+  line-height:1.3;
+}
+.login__p{
+  color:rgba(255,255,255,0.85);
+  margin-top:14px;
+}
+.login__card-glass{
+  background:rgba(255,255,255,0.14);
+  border-color:rgba(255,255,255,0.25);
+  padding:18px;
+}
+.login__avatar{
+  background:rgba(255,255,255,0.25);
+  color:#fff;
+}
+.login__div6{
+  font-size:13.5px;
+}
+.login__text-xs{
+  color:rgba(255,255,255,0.7);
+  margin-top:4px;
+}
+.login__div7{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+}
+.login__div8{
+  width:100%;
+  max-width:380px;
+}
+.login__tabs{
+  width:100%;
+}
+.login__tab-btn{
+  flex:1;
+}
+.login__tabs2{
+  background:transparent;
+  padding:0;
+  gap:10px;
+}
+.login__h22{
+  font-size:22px;
+  margin-bottom:18px;
+}
+.login__text-sm{
+  color:#36759E;
+  font-weight:600;
+}
+.login__flex{
+  color:#94A3B8;
+  font-size:12px;
+}
+.login__divider{
+  flex:1;
+  margin:0;
+}
+.login__text-center{
+  text-align:center;
+}
+.login__a{
+  color:#36759E;
+  font-weight:600;
+}
+
+/* ---- ESTRUTURA DO APP (fora das telas) ---- */
+.app-shell__app{
+  display:none;
+}
+.app-shell__logo{
+  cursor:pointer;
+}
+
+/* ---- CABEÇALHO — CAMPO DE BUSCA ---- */
+.topbar-search-wrap__input-icon-wrap{
+  display:none;
+}
+.topbar-search-wrap__input{
+  width:200px;
+  padding-top:9px;
+  padding-bottom:9px;
+}
+/* em telas maiores, a busca aparece organizada junto dos outros ícones do cabeçalho */
+@media(min-width:981px){
+  .topbar-search-wrap__input-icon-wrap{
+    display:block;
+  }
+}
+
+/* ---- CABEÇALHO — SINO DE NOTIFICAÇÃO ---- */
+.ic-bell-btn__btn-icon{
+  position:relative;
+}
+
+/* ---- CABEÇALHO — AVATAR ---- */
+.topbar-avatar__avatar{
+  width:38px;
+  height:38px;
+  font-size:13px;
+}
+
+/* ---- PACIENTE — DASHBOARD DE EVOLUÇÃO ---- */
+.p-dashboard__stat-icon{
+  background:linear-gradient(135deg, rgba(72,145,193,0.14), rgba(112,169,206,0.10));
+  color:#36759E;
+}
+.p-dashboard__stat-trend{
+  color:#4CAF8A;
+}
+.p-dashboard__stat-icon2{
+  background:#E8F6F0;
+  color:#4CAF8A;
+}
+.p-dashboard__stat-icon3{
+  background:#FBF1E0;
+  color:#E3A340;
+}
+.p-dashboard__stat-icon4{
+  background:#EAF3F9;
+  color:#36759E;
+}
+.p-dashboard__h3{
+  font-size:16px;
+}
+.p-dashboard__mb-16{
+  font-size:16px;
+}
+
+/* ---- PACIENTE — TELA DE BOAS-VINDAS (aparece automaticamente após o cadastro, antes do questionário) ---- */
+.quizintro__wrap{
+  min-height:calc(100vh - 68px - 64px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 0;
+}
+.quizintro__card{
+  max-width:520px;
+  width:100%;
+  text-align:center;
+  padding:44px 36px;
+  animation:comofunciona-fadeup .5s ease both;
+}
+.quizintro__icon{
+  width:64px;
+  height:64px;
+  border-radius:18px;
+  background:linear-gradient(135deg, rgba(72,145,193,0.14), rgba(112,169,206,0.10));
+  color:#36759E;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 18px;
+}
+.quizintro__h1{
+  font-size:26px;
+  margin-top:12px;
+}
+.quizintro__p{
+  font-size:15px;
+  margin-top:12px;
+}
+.quizintro__flex{
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+
+/* ---- PACIENTE — QUESTIONÁRIO DE COMPATIBILIDADE ---- */
+.p-questionario__div{
+  max-width:640px;
+  margin:0 auto;
+}
+.p-questionario__div2{
+  width:12%;
+  transition:width .28s ease;
+}
+.p-questionario__card{
+  padding:36px;
+}
+.p-questionario__mt-8{
+  font-size:22px;
+}
+.p-questionario__flex{
+  flex-wrap:wrap;
+}
+.quiz-options{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.quiz-option{
+  min-height:54px;
+  padding:13px 16px;
+  border:1.5px solid #E6ECF2;
+  border-radius:14px;
+  background:#fff;
+  color:#5B6472;
+  text-align:left;
+  font-size:13.5px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  transition:border-color .15s, background .15s, color .15s, transform .15s;
+}
+.quiz-option:hover{border-color:#70A9CE; background:#F3F9FC; transform:translateY(-1px);}
+.quiz-option.selected{border-color:#4891C1; background:#EAF3F9; color:#36759E; box-shadow:0 0 0 3px rgba(72,145,193,.10);}
+.quiz-option-check{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#4891C1;
+  color:#fff;
+  opacity:0;
+  transform:scale(.75);
+  transition:opacity .15s, transform .15s;
+  flex-shrink:0;
+}
+.quiz-option.selected .quiz-option-check{opacity:1; transform:scale(1);}
+.quiz-error{min-height:21px; margin-top:12px; color:#E0685E; font-size:13px; font-weight:600;}
+.quiz-textarea{min-height:150px;}
+.quiz-char-count{text-align:right; margin-top:6px; color:#94A3B8; font-size:12px;}
+.quiz-actions{gap:12px;}
+@media(max-width:640px){
+  .p-questionario__card{padding:24px 18px;}
+  .quiz-options{grid-template-columns:1fr;}
+  .quiz-actions .btn{flex:1; padding-left:12px; padding-right:12px;}
+}
+
+/* ---- PACIENTE — PERFIL DO PSICÓLOGO ---- */
+.p-psicologo-perfil__grid{
+  grid-template-columns:2fr 1fr;
+  gap:24px;
+}
+.p-psicologo-perfil__card{
+  padding:0;
+  overflow:hidden;
+}
+.p-psicologo-perfil__div{
+  height:120px;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+}
+.p-psicologo-perfil__div2{
+  padding:24px;
+}
+.p-psicologo-perfil__flex{
+  margin-top:-56px;
+}
+.p-psicologo-perfil__avatar{
+  width:96px;
+  height:96px;
+  font-size:28px;
+  border:4px solid #fff;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+}
+.p-psicologo-perfil__mt-16{
+  font-size:22px;
+}
+.p-psicologo-perfil__badge{
+  margin-left:8px;
+}
+.p-psicologo-perfil__flex2{
+  flex-wrap:wrap;
+}
+.p-psicologo-perfil__mb-8{
+  font-size:15px;
+}
+.p-psicologo-perfil__h3{
+  font-size:16px;
+}
+.p-psicologo-perfil__span{
+  color:#F5B84C;
+}
+.p-psicologo-perfil__fw-700{
+  font-size:26px;
+}
+.p-psicologo-perfil__mb-12{
+  font-size:14px;
+}
+
+/* ---- PACIENTE — CHAT ---- */
+.p-chat__card{
+  padding:0;
+  display:flex;
+  height:640px;
+  overflow:hidden;
+}
+.p-chat__div{
+  width:300px;
+  border-right:1px solid #E6ECF2;
+  overflow-y:auto;
+}
+.p-chat__div2{
+  padding:18px;
+}
+.p-chat__div3{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.p-chat__flex{
+  padding:16px 20px;
+  border-bottom:1px solid #E6ECF2;
+}
+.p-chat__avatar{
+  width:42px;
+  height:42px;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+}
+.p-chat__text-xs{
+  color:#4CAF8A;
+}
+.p-chat__flex-col{
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
+  display:flex;
+}
+.p-chat__chat-time{
+  color:rgba(255,255,255,0.7);
+}
+.p-chat__flex2{
+  padding:14px 18px;
+  border-top:1px solid #E6ECF2;
+}
+.p-chat__input{
+  border-radius:100px;
+}
+.p-chat__btn-icon{
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+}
+
+/* ---- PACIENTE — AGENDA ---- */
+.p-agenda__grid{
+  grid-template-columns:1.4fr 1fr;
+  gap:24px;
+}
+.p-agenda__h3{
+  font-size:16px;
+}
+.p-agenda__btn-icon{
+  width:32px;
+  height:32px;
+}
+.p-agenda__div{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px;
+  text-align:center;
+}
+.p-agenda__card{
+  border-left:4px solid #4891C1;
+}
+.p-agenda__avatar{
+  width:36px;
+  height:36px;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+  font-size:12px;
+}
+
+/* ---- PACIENTE — PAGAMENTO ---- */
+.p-pagamento__grid{
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  max-width:900px;
+}
+.p-pagamento__mb-16{
+  font-size:15px;
+}
+.p-pagamento__avatar{
+  width:44px;
+  height:44px;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+}
+.p-pagamento__flex{
+  font-size:17px;
+}
+
+/* ---- PACIENTE — SESSÃO ONLINE ---- */
+.p-sessao__div{
+  max-width:920px;
+  margin:0 auto;
+}
+.p-sessao__card{
+  padding:0;
+  overflow:hidden;
+  background:#1F2937;
+}
+.p-sessao__div2{
+  aspect-ratio:16/9;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#243244,#1F2937);
+}
+.p-sessao__avatar{
+  width:110px;
+  height:110px;
+  font-size:34px;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+}
+.p-sessao__flex{
+  position:absolute;
+  top:16px;
+  left:16px;
+  background:rgba(0,0,0,0.4);
+  color:#fff;
+  padding:6px 14px;
+  border-radius:100px;
+  font-size:12px;
+}
+.p-sessao__span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#EF4444;
+}
+.p-sessao__avatar2{
+  position:absolute;
+  bottom:16px;
+  right:16px;
+  width:110px;
+  height:80px;
+  border-radius:14px;
+  font-size:16px;
+  background:#334155;
+  color:#fff;
+}
+.p-sessao__flex2{
+  padding:20px;
+  background:#111827;
+}
+.p-sessao__btn-icon{
+  background:#374151;
+  color:#fff;
+}
+.p-sessao__btn{
+  padding:11px 26px;
+}
+.p-sessao__text-center{
+  text-align:center;
+}
+
+/* ---- PACIENTE — REGISTRO DE HUMOR ---- */
+.p-humor__div{
+  max-width:560px;
+  margin:0 auto;
+}
+.p-humor__page-head{
+  display:block;
+  text-align:center;
+}
+.p-humor__flex{
+  flex-wrap:wrap;
+}
+.p-humor__mb-12{
+  font-size:14px;
+}
+.p-humor__div2{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+}
+
+/* ---- PACIENTE — MEU PERFIL ---- */
+.p-perfil__grid{
+  grid-template-columns:280px 1fr;
+  gap:24px;
+}
+.p-perfil__card{
+  text-align:center;
+}
+.p-perfil__avatar{
+  width:88px;
+  height:88px;
+  font-size:26px;
+  margin:0 auto;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+}
+.p-perfil__mt-12{
+  font-size:17px;
+}
+
+/* ---- PSICÓLOGO — DASHBOARD ---- */
+.d-dashboard__stat-icon{
+  background:linear-gradient(135deg, rgba(72,145,193,0.14), rgba(112,169,206,0.10));
+  color:#36759E;
+}
+.d-dashboard__stat-icon2{
+  background:#E8F6F0;
+  color:#4CAF8A;
+}
+.d-dashboard__stat-icon3{
+  background:#FBF1E0;
+  color:#E3A340;
+}
+.d-dashboard__stat-icon4{
+  background:#EAF3F9;
+  color:#36759E;
+}
+.d-dashboard__grid{
+  grid-template-columns:1.4fr 1fr;
+  gap:20px;
+}
+.d-dashboard__h3{
+  font-size:16px;
+}
+.d-dashboard__text-sm{
+  color:#36759E;
+}
+
+/* ---- PSICÓLOGO — MEU PERFIL ---- */
+.d-perfil__grid{
+  grid-template-columns:280px 1fr;
+  gap:24px;
+}
+.d-perfil__card{
+  text-align:center;
+}
+.d-perfil__avatar{
+  width:88px;
+  height:88px;
+  font-size:26px;
+  margin:0 auto;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+}
+.d-perfil__mt-12{
+  font-size:17px;
+}
+.d-perfil__flex{
+  flex-wrap:wrap;
+}
+
+/* ---- PSICÓLOGO — VALIDAÇÃO DE CRP ---- */
+.d-crp__grid{
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.d-crp__h3{
+  font-size:15px;
+}
+.d-crp__flex{
+  padding:12px;
+  border:1px solid #E6ECF2;
+  border-radius:12px;
+}
+.d-crp__mb-16{
+  font-size:15px;
+}
+.d-crp__div{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:#E8F6F0;
+  color:#4CAF8A;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.d-crp__div2{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ---- PSICÓLOGO — AGENDA ---- */
+.d-agenda__card{
+  overflow-x:auto;
+}
+.d-agenda__div{
+  display:grid;
+  grid-template-columns:70px repeat(5,1fr);
+  min-width:760px;
+  gap:1px;
+  background:#E6ECF2;
+}
+.d-agenda__div2{
+  background:#fff;
+}
+.d-agenda__div3{
+  background:#fff;
+  padding:10px;
+  text-align:center;
+  font-weight:600;
+  font-size:13px;
+}
+.d-agenda__div4{
+  background:#EAF3F9;
+  padding:10px;
+  text-align:center;
+  font-weight:600;
+  font-size:13px;
+  color:#36759E;
+}
+.d-agenda__div5{
+  display:contents;
+}
+
+/* ---- PSICÓLOGO — PACIENTES ---- */
+.d-pacientes__input-icon-wrap{
+  width:240px;
+}
+.d-pacientes__card{
+  padding:0;
+}
+
+/* ---- PSICÓLOGO — PRONTUÁRIOS ---- */
+.d-prontuarios__flex{
+  color:#E0685E;
+}
+.d-prontuarios__span{
+  width:14px;
+  height:14px;
+}
+.d-prontuarios__grid{
+  grid-template-columns:260px 1fr;
+  gap:20px;
+}
+.d-prontuarios__card{
+  padding:12px;
+}
+.d-prontuarios__h3{
+  font-size:16px;
+}
+.d-prontuarios__textarea{
+  min-height:160px;
+}
+
+/* ---- PSICÓLOGO — EVOLUÇÃO DOS PACIENTES ---- */
+.d-evolucao__input{
+  width:220px;
+}
+.d-evolucao__mb-16{
+  font-size:16px;
+}
+
+/* ---- PSICÓLOGO — FINANCEIRO ---- */
+.d-financeiro__mb-16{
+  font-size:16px;
+}
+.d-financeiro__card{
+  padding:0;
+}
+
+/* ---- PSICÓLOGO — AVALIAÇÕES ---- */
+.d-avaliacoes__grid{
+  grid-template-columns:280px 1fr;
+  gap:20px;
+}
+.d-avaliacoes__card{
+  text-align:center;
+}
+.d-avaliacoes__fw-700{
+  font-size:40px;
+}
+.d-avaliacoes__flex{
+  color:#F5B84C;
+}
+.d-avaliacoes__pbar{
+  flex:1;
+}
+.d-avaliacoes__div{
+  width:88%;
+}
+.d-avaliacoes__div2{
+  width:9%;
+}
+.d-avaliacoes__div3{
+  width:2%;
+}
+.d-avaliacoes__div4{
+  width:1%;
+}
+.d-avaliacoes__div5{
+  width:0%;
+}
+
+/* ---- ADMIN — DASHBOARD ---- */
+.a-dashboard__stat-icon{
+  background:linear-gradient(135deg, rgba(72,145,193,0.14), rgba(112,169,206,0.10));
+  color:#36759E;
+}
+.a-dashboard__stat-trend{
+  color:#4CAF8A;
+}
+.a-dashboard__stat-icon2{
+  background:#E8F6F0;
+  color:#4CAF8A;
+}
+.a-dashboard__stat-icon3{
+  background:#FBF1E0;
+  color:#E3A340;
+}
+.a-dashboard__stat-icon4{
+  background:#EAF3F9;
+  color:#36759E;
+}
+.a-dashboard__grid{
+  grid-template-columns:1.4fr 1fr;
+  gap:20px;
+}
+.a-dashboard__mb-16{
+  font-size:16px;
+}
+.a-dashboard__span{
+  width:10px;
+  height:10px;
+  background:#4891C1;
+  border-radius:2px;
+}
+.a-dashboard__span2{
+  width:10px;
+  height:10px;
+  background:#70A9CE;
+  border-radius:2px;
+}
+.a-dashboard__flex{
+  padding:10px;
+  background:#FBF1E0;
+  border-radius:12px;
+}
+.a-dashboard__span3{
+  color:#E3A340;
+}
+.a-dashboard__flex2{
+  padding:10px;
+  background:#FBEBE9;
+  border-radius:12px;
+}
+.a-dashboard__span4{
+  color:#E0685E;
+}
+.a-dashboard__flex3{
+  padding:10px;
+  background:#E8F6F0;
+  border-radius:12px;
+}
+.a-dashboard__span5{
+  color:#4CAF8A;
+}
+
+/* ---- ADMIN — USUÁRIOS ---- */
+.a-usuarios__input-icon-wrap{
+  width:240px;
+}
+.a-usuarios__card{
+  padding:0;
+}
+
+/* ---- ADMIN — PSICÓLOGOS ---- */
+.a-psicologos__card{
+  padding:0;
+}
+
+/* ---- ADMIN — PACIENTES ---- */
+.a-pacientes__card{
+  padding:0;
+}
+
+/* ---- ADMIN — SUPORTE ---- */
+.a-suporte__grid{
+  grid-template-columns:320px 1fr;
+  gap:20px;
+}
+.a-suporte__card{
+  padding:12px;
+}
+.a-suporte__h3{
+  font-size:16px;
+}
+.a-suporte__chat-time{
+  color:rgba(255,255,255,0.7);
+}
+
+/* ---- ADMIN — ANALYTICS ---- */
+.a-analytics__mb-16{
+  font-size:15px;
+}
+
+/* ---- ADMIN — CONFIGURAÇÕES ---- */
+.a-configuracoes__grid{
+  grid-template-columns:220px 1fr;
+  gap:24px;
+}
+.a-configuracoes__side-link{
+  background:#EAF3F9;
+  color:#36759E;
+}
+.a-configuracoes__mb-16{
+  font-size:15px;
+}
+.a-configuracoes__flex{
+  padding:12px 0;
+  border-top:1px solid #E6ECF2;
+}
+
+/* ---- POP-UP "DEU MATCH!" ---- */
+.modal-match__modal-box{
+  text-align:center;
+  max-width:380px;
+}
+.modal-match__avatar{
+  width:64px;
+  height:64px;
+  font-size:20px;
+  border:3px solid #fff;
+  box-shadow:0 8px 24px rgba(31,45,66,0.08), 0 2px 6px rgba(31,45,66,0.04);
+}
+.modal-match__avatar2{
+  width:64px;
+  height:64px;
+  font-size:20px;
+  border:3px solid #fff;
+  box-shadow:0 8px 24px rgba(31,45,66,0.08), 0 2px 6px rgba(31,45,66,0.04);
+  background:linear-gradient(135deg,#4891C1 0%, #36759E 100%);
+  color:#fff;
+}
+.modal-match__mt-16{
+  font-size:22px;
+}
+
+/* ---- POP-UP "DEU MATCH!" — ÍCONE ---- */
+.ic-heart-modal__div{
+  color:#4891C1;
+}

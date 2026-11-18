@@ -1,0 +1,1514 @@
+.live-stack {
+  display: grid;
+  gap: 20px
+}
+
+.live-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px
+}
+
+.live-card {
+  background: #fff;
+  border: 1px solid #e6ecf2;
+  border-radius: 20px;
+  padding: 24px;
+  min-width: 0
+}
+
+.live-card h2,
+.live-card h3 {
+  margin-bottom: 12px
+}
+
+.live-card p {
+  margin: 8px 0;
+  overflow-wrap: anywhere
+}
+
+.live-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px
+}
+
+.live-muted {
+  color: #5b6472
+}
+
+.live-tag {
+  display: inline-block;
+  border-radius: 30px;
+  background: #eaf3f9;
+  color: #285e83;
+  padding: 5px 12px;
+  font-size: 14px;
+  margin: 3px
+}
+
+.live-empty {
+  padding: 32px;
+  border: 1px dashed #b8cfdf;
+  border-radius: 20px;
+  background: #f3f9fc
+}
+
+.live-empty h2 {
+  font-size: 20px;
+  margin-bottom: 8px
+}
+
+.live-stat {
+  font-size: 32px;
+  font-weight: 700;
+  color: #36759e
+}
+
+.live-form label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 600
+}
+
+.live-form input:not([type=checkbox]),
+.live-form select,
+.live-form textarea {
+  width: 100%;
+  min-height: 44px
+}
+
+.live-form textarea {
+  min-height: 110px
+}
+
+.live-form input[type=checkbox] {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 8px
+}
+
+.live-form small {
+  display: block;
+  margin-top: 5px;
+  color: #5b6472
+}
+
+.live-form .btn {
+  margin-top: 18px
+}
+
+.live-notice {
+  padding: 14px 18px;
+  background: #eaf3f9;
+  border-radius: 12px;
+  margin-bottom: 18px
+}
+
+.live-warning {
+  background: #fff5de;
+  color: #74510b
+}
+
+.live-error {
+  color: #ad2c2c;
+  background: #fff0ee;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 12px 0
+}
+
+.live-success {
+  color: #205f3d;
+  background: #eaf7ee;
+  padding: 12px;
+  border-radius: 10px
+}
+
+.live-hidden {
+  display: none !important
+}
+
+#live-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #17384f;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 12px;
+  z-index: 2000;
+  max-width: 90vw;
+  box-shadow: 0 10px 40px #17384f33
+}
+
+.live-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e6ecf2
+}
+
+.live-row:last-child {
+  border: 0
+}
+
+.live-message {
+  padding: 12px 16px;
+  background: #f0f5f9;
+  border-radius: 14px;
+  margin: 10px 0;
+  max-width: 85%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere
+}
+
+.live-message.mine {
+  margin-left: auto;
+  background: #e1eff9
+}
+
+.live-message small {
+  display: block;
+  font-size: 12px;
+  color: #536774;
+  margin-top: 4px
+}
+
+.live-messages {
+  max-height: 430px;
+  overflow-y: auto;
+  min-height: 180px
+}
+
+.live-chat-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 22px
+}
+
+.live-list-btn {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e6ecf2;
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 8px;
+  color: #1f2937
+}
+
+.live-list-btn.active {
+  background: #eaf3f9;
+  border-color: #4891c1
+}
+
+.live-score {
+  font-size: 32px;
+  font-weight: 700;
+  color: #36759e
+}
+
+.live-table {
+  overflow-x: auto
+}
+
+.live-table table {
+  width: 100%;
+  border-collapse: collapse
+}
+
+.live-table td,
+.live-table th {
+  padding: 13px;
+  text-align: left;
+  border-bottom: 1px solid #e6ecf2;
+  vertical-align: top
+}
+
+.live-pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere
+}
+
+.live-header {
+  margin-bottom: 24px
+}
+
+.live-header p {
+  color: #5b6472;
+  margin-top: 8px
+}
+
+.live-chart {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  height: 160px;
+  padding-top: 20px
+}
+
+.live-chart-col {
+  flex: 1;
+  text-align: center;
+  min-width: 24px
+}
+
+.live-chart-bar {
+  background: #4891c1;
+  border-radius: 7px 7px 0 0;
+  width: 100%;
+  max-width: 45px;
+  margin: auto
+}
+
+.live-chart-col small {
+  font-size: 12px
+}
+
+.live-avatar {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #eaf3f9;
+  color: #36759e;
+  font-weight: 700
+}
+
+.live-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px
+}
+
+.live-checks label {
+  font-size: 14px;
+  font-weight: 400;
+  background: #f3f9fc;
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin: 0
+}
+
+.login__div8 {
+  max-height: none
+}
+
+.login__div {
+  min-height: 100vh;
+  height: auto
+}
+
+.login__div7 {
+  padding: 40px 30px
+}
+
+.login__div8 .live-form {
+  max-width: 440px
+}
+
+.role-switch {
+  background: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #36759e
+}
+
+.input:focus,
+.textarea:focus,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #89bedf;
+  outline-offset: 3px
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: .6
+}
+
+.content {
+  min-width: 0
+}
+
+.live-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px
+}
+
+.live-toolbar .input {
+  max-width: 320px
+}
+
+.live-legal {
+  max-width: 850px;
+  margin: 50px auto;
+  padding: 30px
+}
+
+.live-brand-note {
+  font-size: 13px;
+  color: #5b6472
+}
+
+.live-card details {
+  margin-top: 12px
+}
+
+.live-card summary {
+  cursor: pointer;
+  color: #36759e
+}
+
+#login-name-field.live-hidden {
+  display: none
+}
+
+/* ============================================================
+   ESTILOS DO CHAT NO ESTILO WHATSAPP (UI / UX)
+   ============================================================ */
+.wa-chat-window {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  height: calc(100vh - 140px);
+  min-height: 540px;
+  max-height: 850px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #d1d7db;
+  box-shadow: 0 4px 24px rgba(11, 20, 26, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sidebar de Conversas */
+.wa-sidebar {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-right: 1px solid #d1d7db;
+  height: 100%;
+  min-width: 0;
+}
+
+.wa-sidebar-header {
+  height: 60px;
+  padding: 0 16px;
+  background: #f0f2f5;
+  border-bottom: 1px solid #d1d7db;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.wa-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wa-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a884 0%, #008f6f 100%);
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.wa-avatar-self {
+  background: linear-gradient(135deg, #4891C1 0%, #36759E 100%);
+}
+
+.wa-avatar-header {
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.wa-header-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.wa-app-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111b21;
+  line-height: 1.2;
+}
+
+.wa-chat-count {
+  font-size: 12px;
+  color: #667781;
+}
+
+.wa-role-tag {
+  font-size: 11px;
+  font-weight: 600;
+  background: #e7f7f2;
+  color: #00a884;
+  padding: 3px 9px;
+  border-radius: 12px;
+}
+
+/* Barra de Busca de Conversas */
+.wa-search-bar {
+  padding: 8px 12px;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f2f5;
+  flex-shrink: 0;
+}
+
+.wa-search-box {
+  display: flex;
+  align-items: center;
+  background: #f0f2f5;
+  border-radius: 8px;
+  padding: 0 12px;
+  height: 36px;
+  gap: 8px;
+}
+
+.wa-search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13.5px;
+  color: #111b21;
+  width: 100%;
+}
+
+.wa-search-input::placeholder {
+  color: #8696a0;
+}
+
+/* Lista de Contatos */
+.wa-contact-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.wa-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #f5f6f6;
+  cursor: pointer;
+  transition: background .15s ease;
+  user-select: none;
+}
+
+.wa-contact-item:hover {
+  background: #f5f6f6;
+}
+
+.wa-contact-item.active {
+  background: #f0f2f5;
+  border-left: 4px solid #00a884;
+}
+
+.wa-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.wa-online-dot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00a884;
+  border: 2px solid #ffffff;
+}
+
+.wa-contact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.wa-contact-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.wa-contact-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111b21;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wa-contact-time {
+  font-size: 11.5px;
+  color: #667781;
+  flex-shrink: 0;
+}
+
+.wa-contact-bottom {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #667781;
+}
+
+.wa-contact-preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Painel Principal de Mensagens */
+.wa-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #efeae2;
+  position: relative;
+  min-width: 0;
+  height: 100%;
+}
+
+.wa-chat-header {
+  height: 60px;
+  padding: 0 16px;
+  background: #f0f2f5;
+  border-bottom: 1px solid #d1d7db;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  z-index: 5;
+}
+
+.wa-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.wa-back-btn {
+  display: none;
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 50%;
+  color: #54656f;
+  margin-right: 4px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.wa-back-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.wa-chat-header-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.wa-chat-name {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: #111b21;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wa-chat-status {
+  font-size: 12px;
+  color: #667781;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wa-status-text {
+  color: #00a884;
+  font-weight: 600;
+}
+
+.wa-status-sub {
+  color: #667781;
+}
+
+.wa-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wa-header-action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #54656f;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.wa-header-action-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Área de Mensagens com Wallpaper do WhatsApp */
+.wa-messages-viewport {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  background-color: #efeae2;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0, 0, 0, 0.015) 35px, rgba(0, 0, 0, 0.015) 70px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' opacity='0.055' viewBox='0 0 120 120'%3E%3Cpath fill='%23000' d='M25 15a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm45 20c-4 0-7 3-7 7s3 7 7 7 7-3 7-7-3-7-7-7zm30-15c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zM15 85a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm55 10c-4 0-8 4-8 8s4 8 8 8 8-4 8-8-4-8-8-8zm40-20c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9z'/%3E%3C/svg%3E");
+}
+
+.wa-messages-content {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.wa-encryption-card {
+  background: #ffeecd;
+  color: #54656f;
+  font-size: 12px;
+  line-height: 1.4;
+  border-radius: 8px;
+  padding: 7px 14px;
+  box-shadow: 0 1px 0.5px rgba(11, 20, 26, .13);
+  max-width: 82%;
+  margin: 4px auto 14px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.wa-date-divider {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 14px;
+}
+
+.wa-date-pill {
+  background: rgba(255, 255, 255, 0.92);
+  color: #54656f;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 0.5px rgba(11, 20, 26, .13);
+}
+
+.wa-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+/* Balões de Conversa */
+.wa-bubble-row {
+  display: flex;
+  width: 100%;
+}
+
+.wa-bubble-row.mine {
+  justify-content: flex-end;
+}
+
+.wa-bubble-row.theirs {
+  justify-content: flex-start;
+}
+
+.wa-bubble {
+  max-width: 76%;
+  padding: 7px 10px 6px 12px;
+  font-size: 14.5px;
+  line-height: 1.45;
+  position: relative;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  box-shadow: 0 1px 0.5px rgba(11, 20, 26, .13);
+}
+
+.wa-bubble.mine {
+  background: #d9fdd3;
+  color: #111b21;
+  border-radius: 8px 8px 2px 8px;
+}
+
+.wa-bubble.theirs {
+  background: #ffffff;
+  color: #111b21;
+  border-radius: 8px 8px 8px 2px;
+}
+
+.wa-bubble-body {
+  white-space: pre-wrap;
+}
+
+.wa-bubble-meta {
+  float: right;
+  margin-left: 10px;
+  margin-top: 3px;
+  margin-bottom: -2px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.wa-time {
+  font-size: 11px;
+  color: #667781;
+  white-space: nowrap;
+}
+
+.wa-checks {
+  display: inline-flex;
+  align-items: center;
+}
+
+.wa-first-msg-prompt {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+/* Barra de Entrada (Input Bar) */
+.wa-input-bar {
+  background: #f0f2f5;
+  border-top: 1px solid #d1d7db;
+  padding: 8px 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.wa-quick-emojis {
+  position: absolute;
+  bottom: 100%;
+  left: 12px;
+  right: 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9edef;
+  z-index: 20;
+}
+
+.wa-quick-emojis.hidden {
+  display: none;
+}
+
+.wa-emoji-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  padding: 4px 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: transform .1s, background .1s;
+}
+
+.wa-emoji-btn:hover {
+  background: #f0f2f5;
+  transform: scale(1.18);
+}
+
+.wa-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wa-tool-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #54656f;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+
+.wa-tool-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.wa-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wa-input-wrapper {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e9edef;
+}
+
+.wa-textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.4;
+  max-height: 100px;
+  resize: none;
+  background: transparent;
+  color: #111b21;
+}
+
+.wa-textarea::placeholder {
+  color: #8696a0;
+}
+
+.wa-send-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #00a884;
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 168, 132, 0.35);
+  transition: background .15s, transform .1s;
+}
+
+.wa-send-btn:hover {
+  background: #008f6f;
+  transform: scale(1.05);
+}
+
+.wa-send-btn:active {
+  transform: scale(0.95);
+}
+
+/* Tela de Boas-vindas do WhatsApp */
+.wa-empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  text-align: center;
+  background: #f0f2f5;
+  border-bottom: 6px solid #00a884;
+}
+
+.wa-empty-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #e7f7f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.wa-empty-state h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111b21;
+  margin-bottom: 8px;
+}
+
+.wa-empty-state p {
+  font-size: 14px;
+  color: #667781;
+  max-width: 420px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.wa-empty-lock {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: #8696a0;
+}
+
+/* ============================================================
+   RESPONSIVIDADE COMPLETA PARA DISPOSITIVOS MÓVEIS (MOBILE)
+   ============================================================ */
+
+/* 1. Reset Global e Ajustes de Viewport */
+html,
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+#fullbleed-wrap,
+#app-shell {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* 2. Prevenção de Auto-Zoom em iOS/Android em Campos de Formulário */
+@media(max-width: 768px) {
+
+  input,
+  textarea,
+  select,
+  .input,
+  .textarea,
+  .wa-textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* 3. Gaveta e Menu Lateral do App (Sidebar Drawer + Backdrop) */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+
+.sidebar-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media(max-width: 980px) {
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -290px !important;
+    width: 275px !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+    background: #ffffff !important;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.18) !important;
+    transition: left .25s ease-in-out !important;
+    padding-top: 24px !important;
+  }
+
+  .sidebar.open {
+    left: 0 !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+}
+
+/* 4. Topbar do App */
+@media(max-width: 768px) {
+  .topbar {
+    height: 60px !important;
+    padding: 0 14px !important;
+  }
+
+  .topbar .official-logo {
+    width: 135px !important;
+    height: 38px !important;
+    background-size: 165px 113px !important;
+    background-position: -30px -30px !important;
+  }
+
+  .role-switch {
+    display: none !important;
+  }
+
+  .content {
+    padding: 16px 12px 32px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+}
+
+/* 5. Menu Responsivo da Landing Page */
+.landing__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.landing__mobile-btn {
+  display: none;
+  background: #F1F5F9;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  color: #1F2937;
+  cursor: pointer;
+}
+
+.landing__mobile-drawer {
+  display: none;
+  background: #ffffff;
+  border-bottom: 1px solid #E6ECF2;
+  box-shadow: 0 10px 24px rgba(31, 45, 66, 0.08);
+  padding: 18px 20px 24px;
+}
+
+.landing__mobile-drawer.open {
+  display: block;
+  animation: fadein .2s ease;
+}
+
+.landing__mobile-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1F2937;
+  margin-bottom: 16px;
+}
+
+.landing__mobile-drawer-links a {
+  padding: 6px 0;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+@media(max-width: 768px) {
+  .landing__nav {
+    padding: 14px 0 !important;
+  }
+
+  .landing__flex {
+    display: none !important;
+  }
+
+  .landing__cta-btn {
+    display: none !important;
+  }
+
+  .landing__mobile-btn {
+    display: flex !important;
+  }
+}
+
+/* 6. Hero e Seções da Landing Page */
+@media(max-width: 900px) {
+  .landing__div {
+    padding: 0 16px !important;
+  }
+
+  .landing__section {
+    flex-direction: column !important;
+    gap: 28px !important;
+    padding: 24px 0 32px !important;
+  }
+
+  .landing__div2 {
+    flex: none !important;
+    width: 100% !important;
+  }
+
+  .landing__h1 {
+    font-size: 32px !important;
+    line-height: 1.22 !important;
+  }
+
+  .landing__text-soft {
+    font-size: 15px !important;
+    max-width: 100% !important;
+  }
+
+  .landing__div3 {
+    flex: none !important;
+    min-height: auto !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 8px auto 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .landing__card-glass,
+  .landing__card-glass2,
+  .landing__card-glass3 {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-shadow: 0 4px 16px rgba(31, 45, 66, 0.08) !important;
+  }
+
+  .landing__mt-24 {
+    padding: 32px 0 !important;
+  }
+
+  .landing__section2 {
+    padding: 28px 20px !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 18px !important;
+    border-radius: 20px !important;
+  }
+
+  .landing__section2 .btn {
+    width: 100% !important;
+  }
+
+  .landing__footer {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 16px !important;
+    padding: 24px 0 40px !important;
+  }
+}
+
+@media(max-width: 480px) {
+  .landing__h1 {
+    font-size: 27px !important;
+  }
+
+  .landing__section .flex.gap-12.mt-24 {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .landing__section .flex.gap-12.mt-24 .btn {
+    width: 100% !important;
+  }
+
+  .landing__flex2 {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+}
+
+/* 7. Telas "Como Funciona", "Para Psicólogos" e "Sobre" */
+@media(max-width: 768px) {
+
+  .comofunciona__hero,
+  .parapsi__hero {
+    margin: 16px auto 8px !important;
+    padding: 16px 0 !important;
+  }
+
+  .comofunciona__h1 {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+  }
+
+  .comofunciona__steps {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 24px 0 !important;
+  }
+
+  .comofunciona__line {
+    display: none !important;
+  }
+
+  .parapsi__cta-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .parapsi__cta-row .btn {
+    width: 100% !important;
+  }
+
+  .parapsi__grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin: 16px 0 32px !important;
+  }
+
+  .sobre__teamphoto {
+    width: 100% !important;
+    aspect-ratio: 16/9 !important;
+    max-width: 100% !important;
+    margin: 12px 0 28px !important;
+    border-radius: 18px !important;
+  }
+}
+
+/* 8. Tela de Login e Cadastro */
+@media(max-width: 860px) {
+  .login__div {
+    flex-direction: column !important;
+    min-height: 100vh !important;
+    height: auto !important;
+  }
+
+  .login__div2 {
+    padding: 28px 20px 24px !important;
+    flex: none !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .login__logo {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 12px !important;
+  }
+
+  .login__h2 {
+    font-size: 21px !important;
+    line-height: 1.3 !important;
+  }
+
+  .login__p {
+    font-size: 13.5px !important;
+    margin-top: 6px !important;
+  }
+
+  .login__card-glass {
+    display: none !important;
+  }
+
+  .login__div3,
+  .login__div4 {
+    display: none !important;
+  }
+
+  .login__div7 {
+    padding: 24px 18px 40px !important;
+    flex: 1 !important;
+    width: 100% !important;
+  }
+
+  .login__div8 {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .login__tabs {
+    width: 100% !important;
+  }
+
+  .login__tabs .tab-btn {
+    flex: 1 !important;
+    text-align: center !important;
+  }
+
+  .login__tabs2 {
+    width: 100% !important;
+    display: flex !important;
+    gap: 8px !important;
+  }
+
+  .login__tabs2 .chip {
+    flex: 1 !important;
+    justify-content: center !important;
+    padding: 10px 8px !important;
+    font-size: 13px !important;
+  }
+
+  .crp-signup__uploads {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 9. WhatsApp Chat no Mobile */
+@media(max-width: 768px) {
+  .wa-chat-window {
+    grid-template-columns: 1fr !important;
+    height: calc(100vh - 84px) !important;
+    min-height: 480px !important;
+    border-radius: 12px !important;
+    border: 1px solid #d1d7db !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+
+  .wa-chat-window.has-active-chat .wa-sidebar {
+    display: none !important;
+  }
+
+  .wa-chat-window.has-active-chat .wa-main {
+    display: flex !important;
+  }
+
+  .wa-chat-window.no-active-chat .wa-sidebar {
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  .wa-chat-window.no-active-chat .wa-main {
+    display: none !important;
+  }
+
+  .wa-back-btn {
+    display: flex !important;
+  }
+
+  .wa-messages-content {
+    padding: 12px 10px !important;
+  }
+
+  .wa-bubble {
+    max-width: 86% !important;
+  }
+}
+
+/* 10. Componentes Gerais do App no Mobile */
+@media(max-width: 640px) {
+
+  .live-grid,
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .live-card {
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+  }
+
+  .live-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .live-actions {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .live-actions .btn {
+    min-height: 42px !important;
+  }
+
+  .live-stat {
+    font-size: 26px !important;
+  }
+
+  .live-header h1 {
+    font-size: 22px !important;
+  }
+
+  .live-table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .live-table td,
+  .live-table th {
+    white-space: nowrap !important;
+    padding: 10px 12px !important;
+  }
+
+  .live-chart {
+    overflow-x: auto !important;
+    padding-bottom: 8px !important;
+    max-width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .live-checks {
+    gap: 6px !important;
+  }
+
+  .live-checks label {
+    font-size: 13px !important;
+    padding: 7px 10px !important;
+  }
+
+  .p-questionario__card {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .quiz-options {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .quiz-option {
+    width: 100% !important;
+    min-height: 48px !important;
+    font-size: 14px !important;
+    padding: 12px 14px !important;
+  }
+
+  .quiz-actions {
+    gap: 10px !important;
+  }
+
+  .quiz-actions .btn {
+    flex: 1 !important;
+    min-height: 46px !important;
+  }
+}

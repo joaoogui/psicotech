@@ -379,8 +379,9 @@ button:disabled {
 .wa-chat-window {
   display: grid;
   grid-template-columns: 340px 1fr;
-  height: calc(100vh - 140px);
-  min-height: 540px;
+  height: calc(100vh - 130px);
+  height: calc(100dvh - 130px);
+  min-height: 480px;
   max-height: 850px;
   background: #ffffff;
   border-radius: 16px;
@@ -397,7 +398,10 @@ button:disabled {
   background: #ffffff;
   border-right: 1px solid #d1d7db;
   height: 100%;
+  max-height: 100%;
+  min-height: 0;
   min-width: 0;
+  overflow: hidden;
 }
 
 .wa-sidebar-header {
@@ -501,10 +505,13 @@ button:disabled {
 
 /* Lista de Contatos */
 .wa-contact-list {
-  flex: 1;
+  flex: 1 1 0px;
+  min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  -webkit-overflow-scrolling: touch;
 }
 
 .wa-contact-item {
@@ -591,7 +598,10 @@ button:disabled {
   background: #efeae2;
   position: relative;
   min-width: 0;
+  min-height: 0;
   height: 100%;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .wa-chat-header {
@@ -689,12 +699,16 @@ button:disabled {
 
 /* Área de Mensagens com Wallpaper do WhatsApp */
 .wa-messages-viewport {
-  flex: 1;
+  flex: 1 1 0px;
+  min-height: 0;
+  max-height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
   background-color: #efeae2;
   background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0, 0, 0, 0.015) 35px, rgba(0, 0, 0, 0.015) 70px),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' opacity='0.055' viewBox='0 0 120 120'%3E%3Cpath fill='%23000' d='M25 15a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm45 20c-4 0-7 3-7 7s3 7 7 7 7-3 7-7-3-7-7-7zm30-15c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zM15 85a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm55 10c-4 0-8 4-8 8s4 8 8 8 8-4 8-8-4-8-8-8zm40-20c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9z'/%3E%3C/svg%3E");
+  -webkit-overflow-scrolling: touch;
 }
 
 .wa-messages-content {
@@ -819,6 +833,9 @@ button:disabled {
   padding: 8px 12px;
   position: relative;
   flex-shrink: 0;
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .wa-quick-emojis {
@@ -1380,7 +1397,9 @@ body {
   .wa-chat-window {
     grid-template-columns: 1fr !important;
     height: calc(100vh - 84px) !important;
-    min-height: 480px !important;
+    height: calc(100dvh - 84px) !important;
+    min-height: 380px !important;
+    max-height: none !important;
     border-radius: 12px !important;
     border: 1px solid #d1d7db !important;
     box-shadow: none !important;
@@ -1393,11 +1412,15 @@ body {
 
   .wa-chat-window.has-active-chat .wa-main {
     display: flex !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 0 !important;
   }
 
   .wa-chat-window.no-active-chat .wa-sidebar {
     display: flex !important;
     width: 100% !important;
+    height: 100% !important;
   }
 
   .wa-chat-window.no-active-chat .wa-main {
@@ -1408,12 +1431,22 @@ body {
     display: flex !important;
   }
 
+  .wa-messages-viewport {
+    flex: 1 1 0px !important;
+    min-height: 0 !important;
+  }
+
   .wa-messages-content {
     padding: 12px 10px !important;
   }
 
   .wa-bubble {
     max-width: 86% !important;
+  }
+
+  .wa-input-bar {
+    flex-shrink: 0 !important;
+    padding: 6px 8px !important;
   }
 }
 

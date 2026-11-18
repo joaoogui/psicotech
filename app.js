@@ -223,7 +223,7 @@ async function pollChat(){
   }else if(!chatMessages.length){
    box.innerHTML='<div class="wa-first-msg-prompt"><div class="wa-bubble theirs"><div class="wa-bubble-body">Olá! Este é um espaço seguro e sigiloso para conversarem e combinarem detalhes. Envie a primeira mensagem! 👋</div><div class="wa-bubble-meta"><span class="wa-time">'+formatTime(Date.now())+'</span></div></div></div>';
   }
- }catch(e){const box=$('#messages');if(box)error(box,e.message);}
+ }catch(e){console.warn('Poll chat error:',e.message);}
 }
 function renderMessagesDOM(box){
  box.innerHTML=chatMessages.map(m=>{
@@ -238,7 +238,12 @@ function renderMessagesDOM(box){
    </div>
   </div>`;
  }).join('');
- const vp=$('#messages-viewport');if(vp)vp.scrollTop=vp.scrollHeight;
+ const vp=$('#messages-viewport');
+ if(vp){
+  requestAnimationFrame(()=>{
+   vp.scrollTop=vp.scrollHeight;
+  });
+ }
 }
 async function profile(){const p=user.profile||{};return heading('Meu perfil','Mantenha seus dados atualizados.')+`<div class="live-grid">${card(form('profile',input('Nome completo','name',user.name,'text','required maxlength="100"')+input('E-mail','email',user.email,'email','disabled')+input('Telefone','phone',p.phone,'tel')+input('Cidade / estado','city',p.city)+input('Nascimento','birth',p.birth,'date')+(user.role==='psicologo'?input('CRP','crp',user.crp,'text','disabled')+select('Abordagem','approach',['TCC','Psicanálise','Humanista','Outra'],p.approach)+select('Formato','format',['Online','Presencial','Tanto faz / híbrido'],p.format)+select('Estilo de atendimento','style',QUIZ_QUESTIONS[4].options,p.style)+input('Valor da sessão (R$)','price',p.price?p.price/100:'','number','required min="1" max="10000" step="0.01"')+'<label>Áreas de atendimento</label><div class="live-checks">'+topics.map(t=>`<label><input type="checkbox" name="specialties" value="${esc(t)}" ${p.specialties?.includes(t)?'checked':''}>${esc(t)}</label>`).join('')+'</div>'+area('Apresentação profissional','bio',p.bio,'maxlength="3000"'):'') ,'Salvar perfil'))}${card('<h2>Segurança da conta</h2>'+form('password',input('Senha atual','current','','password','required autocomplete="current-password"')+input('Nova senha','password','','password','required minlength="10" autocomplete="new-password"'),'Alterar senha')+`<div class="live-actions"><a href="/api/export" class="btn btn-outline">Exportar meus dados</a>${go('Solicitar exclusão / suporte',user.role==='paciente'?'p-suporte':'d-suporte')}</div>`)}</div>`;}
 async function moods(){const {moods}=await api('/moods');return heading('Como você está hoje?','Seu registro é privado. Você decide o que compartilhar durante a sessão.')+`<div class="live-grid">${card(form('mood',input('Data','day',day(),'date','required max="'+day()+'"')+select('Como se sente?','score',[['5','5 · Muito bem'],['4','4 · Bem'],['3','3 · Mais ou menos'],['2','2 · Mal'],['1','1 · Muito mal']],'3')+area('Notas opcionais','note','','maxlength="3000"'),'Salvar registro'))}${card(moodChart(moods))}</div><div class="live-stack mt-24">${moods.map(m=>card(`<strong>${esc(m.day.split('-').reverse().join('/'))} · ${m.score}/5</strong><p class="live-pre">${esc(m.note)}</p>`)).join('')}</div>`;}
@@ -288,7 +293,16 @@ document.addEventListener('submit',async e=>{const f=e.target.closest('[data-for
  if(type==='profile'){const r=await api('/profile','PUT',{...v,price:Number(v.price),specialties:fd.getAll('specialties')});user=r.user;signedIn();}
  else if(type==='password'){await api('/password','PUT',v);f.reset();}
  else if(type==='slot'){await api('/slots','POST',{starts:new Date(v.starts).toISOString()});await renderPage(page);}
- else if(type==='message'){await api('/messages','POST',{body:v.body,other:selectedOther});f.reset();const inp=$('#wa-input');if(inp)inp.style.height='auto';await pollChat();return;}
+ else if(type==='message'){
+   const bodyText=(v.body||'').trim();
+   if(!bodyText)return;
+   await api('/messages','POST',{body:bodyText,other:selectedOther});
+   f.reset();
+   const inp=$('#wa-input');
+   if(inp){inp.style.height='auto';inp.focus();}
+   await pollChat();
+   return;
+  }
  else if(type==='mood'){await api('/moods','PUT',{...v,score:Number(v.score)});await renderPage(page);}
  else if(type==='note'){await api('/notes','POST',v);await notesPanel(v.patient,v.patientName);}
  else if(type==='document'){const file=fd.get('file');if(!file?.size||file.size>2*1024*1024)throw Error('Escolha um arquivo de até 2 MB.');const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result.split(',')[1]);r.onerror=reject;r.readAsDataURL(file);});await api('/documents','POST',{kind:v.kind,filename:file.name,data});user=(await api('/me')).user;await renderPage(page);}
@@ -300,7 +314,7 @@ document.addEventListener('submit',async e=>{const f=e.target.closest('[data-for
  else if(type==='settings'){await api('/admin/settings','PUT',v);meta=await api('/me');}
  else if(type==='reset'){await api('/reset','POST',v);history.replaceState(null,'','/');setupLogin();showScreen('login');}
  toast('Salvo com sucesso.');
- }catch(err){error(f,err.message);}finally{delete f.dataset.busy;if(submit)submit.disabled=false;}});
+ }catch(err){if(f.dataset.form==='message'){toast(err.message);}else{error(f,err.message);}}finally{delete f.dataset.busy;if(submit)submit.disabled=false;}});
 
 document.addEventListener('keydown',e=>{
  if(e.target&&e.target.id==='wa-input'&&e.key==='Enter'&&!e.shiftKey){
